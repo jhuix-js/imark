@@ -1,0 +1,199 @@
+/*
+ * Copyright (c) 2025-present, Jhuix (Hui Jin) <jhuix0117@gmail.com>. All rights reserved.
+ * Use of this source code is governed by a MIT license that can be found in the LICENSE file.
+ */
+.hidden {
+  display: none !important;
+}
+
+.divider {
+  display: none;
+  width: 2px;
+  background: #d2d2d2;
+  cursor: col-resize;
+  position: relative;
+  transition: background 0.3s;
+  justify-content: center;
+  align-items: center;
+}
+
+.divider:hover {
+  background: #f59102;
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+
+.toc-switch {
+  position: absolute;
+  z-index: 110;
+  top: 0;
+  right: 2rem;
+  font-size: 3rem;
+  color: #3e69d7;
+  overflow: hidden;
+  cursor: pointer;
+  text-align: center;
+  box-sizing: border-box;
+  -moz-transition: height 0.2s linear;
+  -webkit-transition: height 0.2s linear;
+  -o-transition: height 0.2s linear;
+  transition: height 0.2s linear;
+}
+
+.total-toc {
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  .toc-view ul li div i:not(.toc-chapter) {
+    cursor: pointer;
+  }
+}
+
+.imark-toc {
+  .toc-pin {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    align-items: center;
+    flex-shrink: 0;
+    overflow: hidden;
+    font-size: 2rem;
+    border-bottom: 1px solid #d2d2d2;
+  }
+
+  .toc-pin-text {
+    margin-right: 8px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .toc-fold-wrap {
+    flex-grow: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .toc-icon {
+    background-position: 50%;
+    background-repeat: no-repeat;
+    cursor: pointer;
+  }
+
+  .toc-close {
+    margin-left: auto;
+  }
+
+  .toc-icon:hover {
+    color: rgb(0, 137, 255);
+  }
+
+  .toc-view {
+    width: 100%;
+    overflow: auto;
+
+    .toc-chapter {
+      color: rgb(0, 137, 255);
+    }
+
+    ul {
+      display: block;
+      position: relative;
+      margin-left: 2rem;
+      padding-left: 0;
+      li {
+        width: 100%;
+        list-style: none;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+
+        div {
+          display: flex;
+          flex-direction: row;
+
+          i {
+            margin-left: 0;
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+          }
+
+          a {
+            color: currentColor;
+            font-size: 1.4rem;
+            padding: 0.6rem;
+            white-space: nowrap;
+            text-decoration: none;
+            cursor: pointer;
+          }
+        }
+        div:hover {
+          i,
+          a {
+            color: #f59102;
+          }
+
+          a {
+            border-radius: 0.5rem;
+          }
+        }
+        div:focus {
+          i,
+          a {
+            color: rgb(0, 137, 255);
+          }
+
+          a {
+            border-radius: 0.5rem;
+          }
+        }
+      }
+
+      ul {
+        margin-top: 0.24rem;
+      }
+    }
+
+    .toc-multi-title {
+      font-weight: 600;
+    }
+
+    .toc-title-1 {
+      font-weight: 800;
+      font-size: 1.6rem;
+    }
+  }
+}
+
+.main-toc-row {
+  .imarks {
+    height: 100vh;
+  }
+
+  .divider {
+    display: flex;
+  }
+
+  .total-toc {
+    width: 30em;
+    height: 100vh;
+    min-width: 8em;
+    max-width: 50%;
+    flex-shrink: 0;
+    /* border-left: 1px solid #d2d2d2;*/
+
+    .toc-view {
+      flex-grow: 1;
+    }
+  }
+}

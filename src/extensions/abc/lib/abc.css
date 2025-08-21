@@ -1,0 +1,22 @@
+@import 'abcjs/abcjs-audio.css';
+
+.highlight {
+  fill: #0a9ecc;
+}
+.abcjs-container {
+  border: 1px solid #006b1d;
+  box-shadow: 2px 2px 4px hsl(136deg 30% 31% / 40%);
+  margin-top: 5px;
+}
+.abc-audio {
+  margin-top: 5px;
+}
+.abcjs-cursor {
+  stroke: red;
+}
+.abcjs-inline-audio .abcjs-midi-loop.abcjs-pushed {
+  border: 1px solid transparent;
+}
+.abcjs-inline-audio .abcjs-midi-loop.abcjs-pushed svg path {
+  fill: #6eaa49;
+}
