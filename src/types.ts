@@ -7,7 +7,7 @@ import type {TocOptions} from './extensions/toc'
 import type {WaveDromOptions} from './extensions/wavedrom'
 import type {KatexDelimiters, KatexOptions} from './extensions/katex'
 
-export type Options =
+export type RenderOption =
   | MermaidConfig
   | EChartsInitOpts
   | AbcVisualParams
@@ -16,7 +16,7 @@ export type Options =
   | KatexOptions
   | TocOptions
 
-export type IMarkOptions = {
+export type RenderOptions = {
   mermaid: MermaidConfig
   echarts: EChartsInitOpts
   abc: AbcVisualParams
@@ -26,12 +26,12 @@ export type IMarkOptions = {
   toc: TocOptions
 }
 
-export type IMarkOptionsKey = keyof IMarkOptions
+export type RenderOptionsKey = keyof RenderOptions
 
 export type RemarkSetting = KatexDelimiters | TocOptions
 
 export type Render =
-  | ((tree: HTMLElement, options?: Options) => void)
+  | ((tree: HTMLElement, option?: RenderOption) => void)
   | (() => void)
 
 export interface RenderContext {

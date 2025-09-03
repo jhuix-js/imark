@@ -1,4 +1,4 @@
-import type {IMarkOptionsKey, RenderContext} from './types'
+import type {RenderOptionsKey, RenderContext} from './types'
 import Converter from './converter'
 import {loadStyle} from './public/utils'
 // @ts-ignore
@@ -6,9 +6,14 @@ import gCss from './css/index.css?inline'
 
 export type RehypeOptions = import('./converter').RehypeOptions
 export type Schema = import('hast-util-sanitize').Schema
-export type IMarkOptions = import('./types').IMarkOptions
+export type RenderOptions = import('./types').RenderOptions
 export type RemarkSetting = import('./types').RemarkSetting
 export type IMarkPlugins = import('./types').IMarkPlugins
+
+export interface ImarkOptions {
+  rehype: RehypeOptions
+  render: RenderOptions
+}
 
 function hasMarkPlugin(obj: object): boolean {
   if (typeof obj === 'object') {
@@ -69,19 +74,13 @@ class IMark {
    *
    * @param {string} md
    * @param {HTMLElement} [root]
-   * @param {RehypeOptions} [rehypeOptions]
-   * @param {IMarkOptions} [imarkOptions]
+   * @param {ImarkOptions} [imarkOptions]
    */
-  render(
-    md: string,
-    root?: HTMLElement,
-    rehypeOptions?: RehypeOptions,
-    imarkOptions?: IMarkOptions
-  ) {
+  render(md: string, root?: HTMLElement, imarkOptions?: ImarkOptions) {
     if (!root) {
       root = document.body
     }
-    this.parse(md, rehypeOptions).then(({html, renders}) => {
+    this.parse(md, imarkOptions?.rehype).then(({html, renders}) => {
       loadStyle('imarks-css', gCss)
       const parent = document.createElement('div')
       parent.classList.add('imarks')
@@ -92,11 +91,12 @@ class IMark {
       for (const [k, render] of Object.entries(renders)) {
         if (!render) continue
 
-        const options = imarkOptions
-          ? imarkOptions[k as IMarkOptionsKey]
+        const renderOptions = imarkOptions?.render
+        const renderOption = renderOptions
+          ? renderOptions[k as RenderOptionsKey]
           : undefined
         ;(async (e) => {
-          render(e, options)
+          render(e, renderOption)
         })(parent)
       }
     })
