@@ -66,6 +66,11 @@ export function renderEcharts() {
           selector.innerHTML = ''
         }
         chart = echarts.init(selector, null, {...config, ...meta.options})
+        if (meta.type?.toLowerCase() == 'javascript') {
+          const option = window.eval(`(function(){${code}; return option;})();`)
+          chart.setOption(option)
+          return
+        }
         const option = JSON.parse(code)
         chart.setOption(option)
       })

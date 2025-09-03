@@ -1,18 +1,14 @@
-export type RehypeOptions = import('remark-rehype').Options
-export type Schema = import('hast-util-sanitize').Schema
-import type {
-  Options,
-  IMarkOptions,
-  IMarkOptionsKey,
-  RemarkSetting,
-  RenderContext,
-  IMarkPlugin,
-  IMarkPlugins
-} from './types'
+import type {IMarkOptionsKey, RenderContext} from './types'
 import Converter from './converter'
 import {loadStyle} from './public/utils'
 // @ts-ignore
 import gCss from './css/index.css?inline'
+
+export type RehypeOptions = import('./converter').RehypeOptions
+export type Schema = import('hast-util-sanitize').Schema
+export type IMarkOptions = import('./types').IMarkOptions
+export type RemarkSetting = import('./types').RemarkSetting
+export type IMarkPlugins = import('./types').IMarkPlugins
 
 function hasMarkPlugin(obj: object): boolean {
   if (typeof obj === 'object') {
@@ -61,7 +57,7 @@ class IMark {
    * Parse markdown to html with additional renders
    *
    * @param {string} md
-   * @param {?RehypeOptions} options
+   * @param {RehypeOptions} [options]
    * @returns {Promise<RenderContext>}
    */
   parse(md: string, options?: RehypeOptions): Promise<RenderContext> {
@@ -71,18 +67,20 @@ class IMark {
   /**
    * Render markdown to a html element
    *
-   * @param {HTMLElement} root
    * @param {string} md
-   * @param {?IMarkOptions} options
+   * @param {HTMLElement} [root]
+   * @param {RehypeOptions} [rehypeOptions]
+   * @param {IMarkOptions} [imarkOptions]
    */
   render(
-    root: HTMLElement,
     md: string,
+    root?: HTMLElement,
     rehypeOptions?: RehypeOptions,
     imarkOptions?: IMarkOptions
   ) {
-    if (!root) return
-
+    if (!root) {
+      root = document.body
+    }
     this.parse(md, rehypeOptions).then(({html, renders}) => {
       loadStyle('imarks-css', gCss)
       const parent = document.createElement('div')

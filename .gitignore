@@ -1,6 +1,11 @@
 coverage/
 node_modules/
+dist/
+test/
+docs/
+livedemo/
 .DS_Store
+.vscode
 *.d.ts
 *.log
 *.map
@@ -9,3 +14,4 @@ yarn.lock
 !/test/types.d.ts
 test.md
 *.rar
+package-lock.json

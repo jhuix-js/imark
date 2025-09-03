@@ -22,7 +22,8 @@ export function loadStyle(id, css) {
  *  style?: string,
  *  hasAudio?: boolean,
  *  imageFormat?: string,
- *  options?: object
+ *  options?: object,
+ *  type?: string
  * }} META
  * @param {HTMLElement} el
  * @returns {META | undefined}
@@ -46,6 +47,7 @@ export function parseMeta(el) {
      *  audio?: boolean,
      *  imageFormat?: string,
      *  options?: object
+     *  type?: string
      * }}
      */
     const cfg = JSON.parse(el.dataset.meta)
@@ -87,6 +89,9 @@ export function parseMeta(el) {
     }
     if (typeof cfg.options === 'object') {
       meta.options = cfg.options
+    }
+    if (cfg.type) {
+      meta.type = cfg.type
     }
   } catch (error) {}
   return meta

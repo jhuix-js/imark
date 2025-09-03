@@ -1,15 +1,17 @@
 import type {RemarkSetting, Render, RenderContext, IMarkPlugins} from './types'
 import type {Schema} from 'hast-util-sanitize'
-import type {Options} from 'remark-rehype'
 import type {Processor} from 'unified'
-import rehypeSanitize from 'rehype-sanitize'
-import rehypeStringify from 'rehype-stringify'
 import remarkParse from 'remark-parse'
+import remarkDirective from 'remark-directive'
 import remarkRehype from 'remark-rehype'
-import rehypeRaw from 'rehype-raw'
+import rehypeRaw from './extensions/raw/lib/index'
+import rehypeSanitize from 'rehype-sanitize'
+import rehypeFormat from 'rehype-format'
+import rehypeStringify from 'rehype-stringify'
 import {defaultSchema} from 'hast-util-sanitize'
 import {unified} from 'unified'
 import imarkHeadingId from './extensions/heading-id/index'
+import imarkDirective from './extensions/directive/index'
 import imarkToc from './extensions/toc/index'
 import imarkGfm from './extensions/gfm/index'
 import imarkDataMeta from './extensions/data-meta/index'
@@ -20,6 +22,35 @@ import imarkMermaid from './extensions/mermaid/index'
 import imarkRailroad from './extensions/railroad/index'
 import imarkWaveDrom from './extensions/wavedrom'
 import imarkKatex from './extensions/katex'
+
+// @ts-ignore
+import remarkGridTable from '@adobe/remark-gridtables'
+import {
+  TYPE_TABLE,
+  mdast2hastGridTablesHandler
+  // @ts-ignore
+} from '@adobe/mdast-util-gridtables'
+
+type rehypeOptons = import('remark-rehype').Options
+export interface RehypeOptions extends rehypeOptons {
+  outFormat?: boolean
+}
+
+const defSchema: Schema = defaultSchema
+if (defSchema.attributes) {
+  defSchema.attributes['*'].push('data*')
+  defSchema.attributes['iframe'] = [
+    'src',
+    'width',
+    'height',
+    'frameBorder',
+    'allow',
+    'allowFullScreen'
+  ]
+  defSchema.attributes['link'] = ['rel', 'href']
+  defSchema.attributes['style'] = ['type']
+}
+if (defSchema.tagNames) defSchema.tagNames.push('style', 'iframe', 'link')
 
 /**
  * Converer of markdown to HTML
@@ -52,13 +83,14 @@ class Converter {
    * @constructor
    */
   constructor() {
-    this.schema = defaultSchema
+    this.schema = defSchema
     this.schema.clobberPrefix = 'imark-'
     this.plugins = {
       head: imarkHeadingId(),
-      toc: imarkToc(),
-      gfm: imarkGfm(),
       meta: imarkDataMeta(),
+      directive: imarkDirective(),
+      gfm: imarkGfm(),
+      toc: imarkToc(),
       abc: imarkAbc(),
       uml: imarkUml(),
       echarts: imarkEcharts(),
@@ -79,14 +111,14 @@ class Converter {
    * Convert markdown to html with additional renders
    *
    * @param {string} v
-   * @param {?Options} options
+   * @param {RehypeOptions} [options]
    * @returns {Promise<RenderContext>}
    */
-  async toHTML(v: string, options?: Options): Promise<RenderContext> {
+  async toHTML(v: string, options?: RehypeOptions): Promise<RenderContext> {
     // Allow class names by default
     let schema = this.schema
     if (!schema) {
-      schema = defaultSchema
+      schema = defSchema
     }
     if (schema.attributes) {
       schema.attributes['*'].push('className')
@@ -102,6 +134,8 @@ class Converter {
     }
 
     let processor: Processor = unified().use<any, any, any>(remarkParse)
+    processor = processor.use<any, any, any>(remarkGridTable)
+    processor = processor.use<any, any, any>(remarkDirective)
     if (this.plugins) {
       for (const plugin of Object.values(this.plugins)) {
         if (plugin.remark) processor = plugin.remark(processor)
@@ -110,8 +144,12 @@ class Converter {
     processor = processor.use<any, any, any>(remarkRehype, {
       allowDangerousHtml: true,
       clobberPrefix: schema.clobberPrefix,
+      handlers: {
+        [TYPE_TABLE]: mdast2hastGridTablesHandler()
+      },
       ...options
     })
+
     processor = processor.use<any, any, any>(rehypeRaw)
     if (this.plugins) {
       for (const plugin of Object.values(this.plugins)) {
@@ -125,8 +163,12 @@ class Converter {
         if (plugin.render) renders[key] = plugin.render
       }
     }
+
+    if (options?.outFormat) {
+      processor = processor.use<any, any, any>(rehypeFormat)
+    }
     return processor
-      .use(rehypeStringify)
+      .use(rehypeStringify, {allowDangerousHtml: true})
       .process(v)
       .then((file) => {
         return {html: file.toString(), renders: renders}
