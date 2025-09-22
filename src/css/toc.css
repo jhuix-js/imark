@@ -30,7 +30,7 @@
 }
 
 .toc-switch {
-  position: absolute;
+  position: fixed;
   z-index: 110;
   top: 0;
   right: 2rem;
@@ -100,7 +100,11 @@
   .toc-view {
     width: 100%;
     overflow: auto;
+    display: flex;
 
+    .toc-main {
+      flex-grow: 1;
+    }
     .toc-chapter {
       color: rgb(0, 137, 255);
     }
@@ -181,19 +185,37 @@
   }
 
   .divider {
-    display: flex;
+    display: none;
   }
 
   .total-toc {
-    width: 30em;
-    height: 100vh;
-    min-width: 8em;
-    max-width: 50%;
+    z-index: 11;
+    position: absolute;
+    width: 310px;
+    height: calc(100% - 220px);
+    max-width: calc(100% - 110px);
+    min-height: 300px;
+    right: 0;
+    top: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.825);
+    margin-right: 8px;
+    box-sizing: border-box;
+    box-shadow: 0px 5px 11px rgba(51, 51, 51, 0.2);
+    border-radius: 10px;
+    transition: all 0.3s;
     flex-shrink: 0;
-    /* border-left: 1px solid #d2d2d2;*/
 
     .toc-view {
       flex-grow: 1;
+      direction: rtl;
+    }
+    .toc-view::-webkit-scrollbar-thumb {
+      background: #f59102;
+    }
+    .toc-main > li {
+      direction: ltr;
     }
   }
 }

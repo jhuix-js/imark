@@ -1,5 +1,5 @@
-import type {IMarkPlugin, Render} from '../../types'
-import {renderWaveDrom} from './lib/index'
+import type { IMarkPlugin, Render } from '../../types'
+import { renderWaveDrom } from './lib/index'
 
 export interface WaveDromOptions {
   WaveDromSkin: 'default' | 'dark' | 'lowkey' | 'narrow' | 'narrower' | 'narrowerer'

@@ -1,13 +1,10 @@
-import {raw} from 'hast-util-raw'
-import {VFile} from 'vfile'
-import type {Root} from 'hast'
-import type {Raw} from 'mdast-util-to-hast'
-import type {Parent, Node} from 'unist'
+import { raw } from 'hast-util-raw'
+import { VFile } from 'vfile'
+import type { Root } from 'hast'
+import type { Raw } from 'mdast-util-to-hast'
+import type { Parent, Node } from 'unist'
 
-function findChildren(
-  tree: Parent,
-  cb: (node: Node, index: number, parent: Parent) => number
-) {
+function findChildren(tree: Parent, cb: (node: Node, index: number, parent: Parent) => number) {
   if (!tree || !tree.children || !tree.children.length || !cb) {
     return
   }
@@ -55,7 +52,7 @@ export default function rehypeRaw(): (tree: Root) => void {
     findChildren(tree, (node: Node, index: number, parent: Parent): number => {
       if (node.type === 'raw') {
         const root = raw(
-          {type: 'root', children: [node as Raw]},
+          { type: 'root', children: [node as Raw] },
           {
             file: new VFile((node as Raw).value)
           }

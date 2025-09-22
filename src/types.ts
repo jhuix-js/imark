@@ -1,38 +1,46 @@
-import type {Processor} from 'unified'
-import type {MermaidConfig} from './extensions/mermaid'
-import type {EChartsInitOpts} from './extensions/echarts'
-import type {AbcVisualParams} from './extensions/abc'
-import type {UmlOptions} from './extensions/uml'
-import type {TocOptions} from './extensions/toc'
-import type {WaveDromOptions} from './extensions/wavedrom'
-import type {KatexDelimiters, KatexOptions} from './extensions/katex'
+import type { Processor } from 'unified'
+import type { Handler } from 'mdast-util-to-hast'
+import type { EmojiOptions } from './extensions/emoji'
+import type { KatexDelimiters, KatexOptions } from './extensions/katex'
+import type { GfmOptions } from './extensions/gfm'
+import type { TocOptions } from './extensions/toc'
+import type { MermaidConfig } from './extensions/mermaid'
+import type { EChartsInitOpts } from './extensions/echarts'
+import type { AbcVisualParams } from './extensions/abc'
+import type { UmlOptions } from './extensions/uml'
+import type { WaveDromOptions } from './extensions/wavedrom'
+import type { VegaEmbedOptions } from './extensions/vega'
 
 export type RenderOption =
+  | EmojiOptions
+  | KatexOptions
+  | GfmOptions
+  | TocOptions
   | MermaidConfig
   | EChartsInitOpts
   | AbcVisualParams
   | UmlOptions
   | WaveDromOptions
-  | KatexOptions
-  | TocOptions
+  | VegaEmbedOptions
 
 export type RenderOptions = {
+  emoji: EmojiOptions
+  katex: KatexOptions
+  gfm: GfmOptions
+  toc: TocOptions
   mermaid: MermaidConfig
   echarts: EChartsInitOpts
   abc: AbcVisualParams
   uml: UmlOptions
   wavedrom: WaveDromOptions
-  katex: KatexOptions
-  toc: TocOptions
+  vega: VegaEmbedOptions
 }
 
 export type RenderOptionsKey = keyof RenderOptions
 
 export type RemarkSetting = KatexDelimiters | TocOptions
 
-export type Render =
-  | ((tree: HTMLElement, option?: RenderOption) => void)
-  | (() => void)
+export type Render = ((tree: HTMLElement, option?: RenderOption) => void) | (() => void)
 
 export interface RenderContext {
   /**
@@ -47,17 +55,27 @@ export interface RenderContext {
   renders?: Record<string, Render>
 }
 
+export type Handlers = Partial<Record<string, Handler>>
+
 export interface IMarkPlugin {
   /**
    * Setting for parse markdown
    */
-  setting?: ((s: KatexDelimiters) => void) | ((s: TocOptions) => void)
+  setting?:
+    | ((s: GfmOptions) => void)
+    | ((s: KatexDelimiters) => void)
+    | ((s: TocOptions) => void)
+    | ((s: EmojiOptions) => void)
   /**
    * Customize markdown parse by remark plugins:
    *
    * https://github.com/remarkjs/remark/blob/main/doc/plugins.md
    */
   remark?: (p: Processor) => Processor
+  /**
+   * Rehype handlers for remark rehype
+   */
+  handlers?: Handlers
   /**
    * Customize HTML parse by rehype plugins:
    *

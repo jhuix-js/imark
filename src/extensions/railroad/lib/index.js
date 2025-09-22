@@ -1,4 +1,4 @@
-import {parseMeta, loadStyle} from '../../../public/utils'
+import { parseMeta, loadStyle } from '../../../public/utils'
 // @ts-ignore
 import railroadCss from 'railroad-diagrams/railroad-diagrams.css?inline'
 

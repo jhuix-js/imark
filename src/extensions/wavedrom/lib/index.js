@@ -1,4 +1,4 @@
-import {parseMeta} from '../../../public/utils'
+import { parseMeta } from '../../../public/utils'
 // @ts-ignore
 import defSkin from 'wavedrom/skins/default.js'
 // @ts-ignore

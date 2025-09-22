@@ -53,8 +53,7 @@ export function parseMeta(el) {
     const cfg = JSON.parse(el.dataset.meta)
     if (
       (typeof cfg.codeblock === 'boolean' && cfg.codeblock) ||
-      (typeof cfg.codeblock === 'string' &&
-        cfg.codeblock.toLowerCase() === 'true')
+      (typeof cfg.codeblock === 'string' && cfg.codeblock.toLowerCase() === 'true')
     ) {
       return
     }
@@ -127,7 +126,7 @@ export function deepMerge(target, ...sources) {
         // @ts-ignore
         deepMerge(target[key], val)
       } else {
-        Object.assign(target, {[key]: val})
+        Object.assign(target, { [key]: val })
       }
     }
   }

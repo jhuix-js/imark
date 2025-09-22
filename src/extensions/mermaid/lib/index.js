@@ -1,7 +1,7 @@
-import {parseMeta} from '../../../public/utils'
+import { parseMeta } from '../../../public/utils'
 
 /**
- * Render elements with a `language-echarts`.
+ * Render elements with a `language-memaid`.
  *
  * @returns
  *   Transform.

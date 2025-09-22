@@ -7,8 +7,8 @@
  *   (default: `false`).
  */
 
-import {visit} from 'unist-util-visit'
-import {setNodeId, getDefaultId} from './util.js'
+import { visit } from 'unist-util-visit'
+import { setNodeId, getDefaultId } from './util.js'
 
 /**
  * The remark plugin for supporting custom id and default id
@@ -18,7 +18,7 @@ import {setNodeId, getDefaultId} from './util.js'
  * @returns
  *   Transform.
  */
-export default function remarkHeadingId(options = {defaults: false}) {
+export default function remarkHeadingId(options = { defaults: false }) {
   /**
    * Transform.
    *

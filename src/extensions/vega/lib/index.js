@@ -1,36 +1,37 @@
 import { parseMeta } from '../../../public/utils'
 
 /**
- * Render elements with a `language-echarts`.
+ * Render elements with a `language-vega`.
  *
  * @returns
  *   Transform.
  */
-export function renderEcharts() {
+export function renderVega() {
   /**
    * Transform.
    *
    * @param {HTMLElement} tree
    *   Tree.
-   * @param {import('echarts').EChartsInitOpts} [options]
-   *   ECharts Init Options.
+   * @param {import('vega-embed').EmbedOptions} [options]
+   *   Vega embed options.
    * @returns
    *   Transform.
    */
   return function (tree, options) {
-    /** @type {import('echarts').EChartsInitOpts} */
+    /** @type {import('vega-embed').EmbedOptions} */
     const config = {
+      actions: { editor: true },
+      theme: 'vox',
+      tooltip: false,
       renderer: 'svg',
-      ssr: false,
-      useDirtyRect: false,
       ...options
     }
     /** @type {NodeListOf<HTMLElement>} */
-    const els = tree.querySelectorAll('pre>code.language-echarts')
+    const els = tree.querySelectorAll('pre>code.language-vega')
     if (els.length === 0) return
 
-    import('echarts').then((c) => {
-      const echarts = c
+    import('vega-embed').then((c) => {
+      const vegaEmbed = c.default
       els.forEach((el, i) => {
         const pre = el.parentElement
         if (!pre) return
@@ -39,7 +40,7 @@ export function renderEcharts() {
         if (!meta) return
 
         const code = el.innerText
-        const id = `echarts-${Date.now()}-${i}`
+        const id = `vega-${Date.now()}-${i}`
         const container = document.createElement('div')
         container.id = id + '-container'
         container.classList.add('echarts')
@@ -61,18 +62,14 @@ export function renderEcharts() {
         }
         container.append(selector)
         pre.replaceWith(container)
-        let chart = echarts.getInstanceByDom(selector)
-        if (!chart) {
-          selector.innerHTML = ''
-        }
-        chart = echarts.init(selector, null, { ...config, ...meta.options })
         if (meta.type?.toLowerCase() == 'javascript') {
           const option = window.eval(`(function(){${code}; return option;})();`)
-          chart.setOption(option)
+          vegaEmbed(selector, option, config)
           return
         }
+
         const option = JSON.parse(code)
-        chart.setOption(option)
+        vegaEmbed(selector, option, config)
       })
     })
   }

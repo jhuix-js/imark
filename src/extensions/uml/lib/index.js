@@ -1,5 +1,5 @@
-import {parseMeta} from '../../../public/utils'
-import {encodeUml} from './codec'
+import { parseMeta } from '../../../public/utils'
+import { encodeUml } from './codec'
 
 /**
  * Render elements with a `language-plantuml`.
@@ -62,10 +62,7 @@ export function renderUml() {
           })
         } else if (typeof window !== 'undefined' && window.fetch) {
           const protocol = window && window.location.protocol
-          const website =
-            (protocol === 'http:' || protocol === 'https:'
-              ? '//'
-              : 'https://') + config.umlWebSite
+          const website = (protocol === 'http:' || protocol === 'https:' ? '//' : 'https://') + config.umlWebSite
           const imageExtension = `.${imageFormat}`
           const uml = encodeUml(code)
           const src = `${website}/${imageFormat}/${uml}${imageExtension}`
@@ -85,11 +82,8 @@ export function renderUml() {
         }
       } else {
         const protocol = window && window.location.protocol
-        const website =
-          (protocol === 'http:' || protocol === 'https:' ? '//' : 'https://') +
-          config.umlWebSite
-        const imageExtension =
-          imageFormat !== defaultImageFormat ? `.${imageFormat}` : ''
+        const website = (protocol === 'http:' || protocol === 'https:' ? '//' : 'https://') + config.umlWebSite
+        const imageExtension = imageFormat !== defaultImageFormat ? `.${imageFormat}` : ''
         const uml = encodeUml(code)
         const selector = document.createElement('img')
         selector.src = `${website}/${imageFormat}/${uml}${imageExtension}`

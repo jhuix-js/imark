@@ -1,7 +1,9 @@
 // vite.config.js
-import {resolve} from 'path'
-import {defineConfig} from 'rolldown-vite'
-import {nodePolyfills} from 'vite-plugin-node-polyfills'
+import { resolve } from 'path'
+import { defineConfig } from 'rolldown-vite'
+import { nodePolyfills } from 'vite-plugin-node-polyfills'
+import replace from '@rollup/plugin-replace'
+import { includes } from 'lodash'
 // import dts from 'vite-plugin-dts'
 
 export default defineConfig({
@@ -12,7 +14,16 @@ export default defineConfig({
       zlib: '@jspm/core/nodelibs/zlib'
     }
   },
-  plugins: [nodePolyfills()],
+  plugins: [
+    replace({
+      preventAssignment: false,
+      include: ['node_modules/wavedrom/**/*.js'],
+      values: {
+        eval: 'window.eval'
+      }
+    }),
+    nodePolyfills()
+  ],
   build: {
     // target: 'ESNext',
     // outDir: 'dist',

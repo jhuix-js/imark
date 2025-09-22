@@ -1,6 +1,6 @@
-import type {RenderOptionsKey, RenderContext} from './types'
+import type { RenderOptionsKey, RenderContext } from './types'
 import Converter from './converter'
-import {loadStyle} from './public/utils'
+import { loadStyle } from './public/utils'
 // @ts-ignore
 import gCss from './css/index.css?inline'
 
@@ -46,10 +46,10 @@ class IMark {
       }
     }
     if (!isPlugin) {
-      this.converter.schema = {...this.converter.schema, ...schema}
+      this.converter.schema = { ...this.converter.schema, ...schema }
     } else {
       const plugins = schema as IMarkPlugins
-      this.converter.plugins = {...this.converter.plugins, ...plugins}
+      this.converter.plugins = { ...this.converter.plugins, ...plugins }
     }
     return this
   }
@@ -80,7 +80,7 @@ class IMark {
     if (!root) {
       root = document.body
     }
-    this.parse(md, imarkOptions?.rehype).then(({html, renders}) => {
+    this.parse(md, imarkOptions?.rehype).then(({ html, renders }) => {
       loadStyle('imarks-css', gCss)
       const parent = document.createElement('div')
       parent.classList.add('imarks')
@@ -92,9 +92,7 @@ class IMark {
         if (!render) continue
 
         const renderOptions = imarkOptions?.render
-        const renderOption = renderOptions
-          ? renderOptions[k as RenderOptionsKey]
-          : undefined
+        const renderOption = renderOptions ? renderOptions[k as RenderOptionsKey] : undefined
         ;(async (e) => {
           render(e, renderOption)
         })(parent)

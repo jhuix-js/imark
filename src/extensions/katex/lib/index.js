@@ -6,8 +6,8 @@
  * @typedef {import('../index').MathDelimiters} MathDelimiters
  * @typedef {import('../index').KatexDelimiters} KatexDelimiters
  */
-import {visitParents} from 'unist-util-visit-parents'
-import {parseMeta, loadStyle} from '../../../public/utils'
+import { visitParents } from 'unist-util-visit-parents'
+import { parseMeta, loadStyle } from '../../../public/utils'
 import asciimathToTex from './asciimath2tex'
 // @ts-ignore
 import katexCss from 'katex/dist/katex.min.css?inline'
@@ -33,10 +33,7 @@ function renderToHtml(id, name, data, callback) {
         if (callback) {
           math = callback(code)
         }
-        html +=
-          name.length > 0
-            ? `<div id="${id}" class="${name}">${math}</div>`
-            : `<div id="${id}">${math}</div>`
+        html += name.length > 0 ? `<div id="${id}" class="${name}">${math}</div>` : `<div id="${id}">${math}</div>`
       } else {
         html += '<br>'
       }
@@ -46,10 +43,7 @@ function renderToHtml(id, name, data, callback) {
     if (callback) {
       math = callback(data)
     }
-    html +=
-      name.length > 0
-        ? `<div id="${id}" class="${name}">${math}</div>`
-        : `<div id="${id}">${math}</div>`
+    html += name.length > 0 ? `<div id="${id}" class="${name}">${math}</div>` : `<div id="${id}">${math}</div>`
   }
   return html
 }
@@ -58,19 +52,19 @@ function renderToHtml(id, name, data, callback) {
 const defDelimiters = {
   texmath: {
     display: [
-      {left: '$$', right: '$$'},
-      {left: '\\[', right: '\\]'},
-      {left: '\\begin{equation}', right: '\\end{equation}'},
-      {left: '\\begin{align}', right: '\\end{align}'},
-      {left: '\\begin{alignat}', right: '\\end{alignat}'},
-      {left: '\\begin{gather}', right: '\\end{gather}'},
-      {left: '\\begin{CD}', right: '\\end{CD}'}
+      { left: '$$', right: '$$' },
+      { left: '\\[', right: '\\]' },
+      { left: '\\begin{equation}', right: '\\end{equation}' },
+      { left: '\\begin{align}', right: '\\end{align}' },
+      { left: '\\begin{alignat}', right: '\\end{alignat}' },
+      { left: '\\begin{gather}', right: '\\end{gather}' },
+      { left: '\\begin{CD}', right: '\\end{CD}' }
     ],
-    inline: [{left: '\\(', right: '\\)'}]
+    inline: [{ left: '\\(', right: '\\)' }]
   },
   asciimath: {
-    display: [{left: '@@', right: '@@'}],
-    inline: [{left: '\\$', right: '\\$'}]
+    display: [{ left: '@@', right: '@@' }],
+    inline: [{ left: '\\$', right: '\\$' }]
   }
 }
 
@@ -133,7 +127,7 @@ function parseNode(node, mathDelimiters) {
 
     /** @type {Text} */
     const text = element
-    const newContent = mathDelimiters.reduce((acc, {test, delimiter}) => {
+    const newContent = mathDelimiters.reduce((acc, { test, delimiter }) => {
       return acc.replace(test, (match, math) => {
         const _ = match
         ++inlineMathCount
@@ -166,11 +160,8 @@ export function rehypeKatex(delimiters) {
     .concat(getMathDelimiter(delimiters, 'asciimath', 'display'))
     .concat(getMathDelimiter(delimiters, 'asciimath', 'inline'))
   const mathDelimiters = katexDelimites.map((delimiter) => {
-    const test = new RegExp(
-      `${escapeRegExp(delimiter.left)}(.+?)${escapeRegExp(delimiter.right)}`,
-      'g'
-    )
-    return {test, delimiter}
+    const test = new RegExp(`${escapeRegExp(delimiter.left)}(.+?)${escapeRegExp(delimiter.right)}`, 'g')
+    return { test, delimiter }
   })
 
   const headings = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']
@@ -217,9 +208,7 @@ export function renderKatex() {
       ...options
     }
     /** @type {NodeListOf<HTMLElement>} */
-    const katexs = tree.querySelectorAll(
-      'pre>code.language-latex,language-katex'
-    )
+    const katexs = tree.querySelectorAll('pre>code.language-latex,language-katex')
     /** @type {NodeListOf<HTMLElement>} */
     const asciimaths = tree.querySelectorAll('pre>code.language-asciimath')
     // /** @type {NodeListOf<HTMLElement>} */

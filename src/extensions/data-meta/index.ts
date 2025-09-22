@@ -1,6 +1,6 @@
 import type {IMarkPlugin} from '../../types'
 import type {Processor} from 'unified'
-import {remarkDataMeta, rehypeDataMeta} from './lib/index.js'
+import {remarkDataMeta} from './lib/index.js'
 
 export default function imarkDataMeta(): IMarkPlugin {
   return {

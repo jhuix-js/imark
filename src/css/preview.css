@@ -2,6 +2,32 @@
  * Copyright (c) 2019-present, Jhuix (Hui Jin) <jhuix0117@gmail.com>. All rights reserved.
  * Use of this source code is governed by a MIT license that can be found in the LICENSE file.
  */
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(241, 241, 241);
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb {
+  cursor: pointer;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.25);
+  transition: color 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(0, 0, 0, 0.15);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(128, 135, 139, 0.8);
+}
+
 .imarks {
   position: relative;
   padding-left: 1rem;
@@ -187,7 +213,8 @@
   code {
     border-style: solid;
     border-width: 1px;
-    font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    font-family:
+      SFMono-Regular, Consolas, 'Liberation Mono', Menlo, Courier, monospace;
     font-weight: normal;
     padding: 0.125em 0.3125em 0.0625em;
   }
@@ -298,7 +325,7 @@
   }
 
   blockquote cite:before {
-    content: "\2014 \0020";
+    content: '\2014 \0020';
   }
 
   blockquote cite a,

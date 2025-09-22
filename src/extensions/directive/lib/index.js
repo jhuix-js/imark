@@ -2,8 +2,8 @@
  * @import {Root} from 'mdast'
  */
 
-import {h} from 'hastscript'
-import {visit} from 'unist-util-visit'
+import { h } from 'hastscript'
+import { visit } from 'unist-util-visit'
 import { loadStyle } from '../../../public/utils'
 
 let directiveCss = ''
@@ -29,12 +29,7 @@ export function remarkDirective() {
         case 'containerDirective':
           {
             const name = node.name ? node.name.toLowerCase() : ''
-            if (
-              name === 'note' ||
-              name === 'alert' ||
-              name === '提示' ||
-              name === '注意'
-            ) {
+            if (name === 'note' || name === 'alert' || name === '提示' || name === '注意') {
               const data = node.data || (node.data = {})
               const tagName = 'div'
               data.hName = tagName
@@ -45,17 +40,11 @@ export function remarkDirective() {
                     (data.hProperties.className = [data.hProperties.className])
                   : data.hProperties.className
                 : (data.hProperties.className = [])
-              const typeName =
-                name === 'alert' || name === '注意' ? 'alert' : 'container'
+              const typeName = name === 'alert' || name === '注意' ? 'alert' : 'container'
               className.unshift(typeName)
               className.unshift('imark-container')
               if (data.hProperties.afterStyle || data.hProperties.beforeStyle) {
-                const randName =
-                  typeName +
-                  '-' +
-                  Date.now() +
-                  '-' +
-                  Math.floor(Math.random() * 10000)
+                const randName = typeName + '-' + Date.now() + '-' + Math.floor(Math.random() * 10000)
                 className.push(randName)
                 directiveCss +=
                   `.${className.join('.')}` +
@@ -64,12 +53,10 @@ export function remarkDirective() {
                     : ':before{' + data.hProperties.beforeStyle + '}')
               }
               if (node.children.length > 0) {
-                const childData =
-                  node.children[0].data || (node.children[0].data = {})
+                const childData = node.children[0].data || (node.children[0].data = {})
                 // @ts-ignore
                 if (childData.directiveLabel) {
-                  const prop =
-                    childData.hProperties || (childData.hProperties = {})
+                  const prop = childData.hProperties || (childData.hProperties = {})
                   const childClassName = prop.className
                     ? !Array.isArray(prop.className)
                       ? // @ts-ignore

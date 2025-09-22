@@ -1,35 +1,29 @@
-import type {RemarkSetting, Render, RenderContext, IMarkPlugins} from './types'
-import type {Schema} from 'hast-util-sanitize'
-import type {Processor} from 'unified'
+import type { RemarkSetting, Render, RenderContext, Handlers, IMarkPlugins } from './types'
+import type { Schema } from 'hast-util-sanitize'
+import type { Processor } from 'unified'
 import remarkParse from 'remark-parse'
-import remarkDirective from 'remark-directive'
 import remarkRehype from 'remark-rehype'
 import rehypeRaw from './extensions/raw/lib/index'
-import rehypeSanitize from 'rehype-sanitize'
+// import rehypeSanitize from 'rehype-sanitize'
 import rehypeFormat from 'rehype-format'
 import rehypeStringify from 'rehype-stringify'
-import {defaultSchema} from 'hast-util-sanitize'
-import {unified} from 'unified'
-import imarkHeadingId from './extensions/heading-id/index'
-import imarkDirective from './extensions/directive/index'
-import imarkToc from './extensions/toc/index'
-import imarkGfm from './extensions/gfm/index'
-import imarkDataMeta from './extensions/data-meta/index'
-import imarkAbc from './extensions/abc/index'
-import imarkUml from './extensions/uml/index'
-import imarkEcharts from './extensions/echarts/index'
-import imarkMermaid from './extensions/mermaid/index'
-import imarkRailroad from './extensions/railroad/index'
-import imarkWaveDrom from './extensions/wavedrom'
+import { defaultSchema } from 'hast-util-sanitize'
+import { unified } from 'unified'
+import imarkHeadingId from './extensions/heading-id'
+import imarkDirective from './extensions/directive'
+import imarkGirdTables from './extensions/girdtables'
+import imarkEmoji from './extensions/emoji'
 import imarkKatex from './extensions/katex'
-
-// @ts-ignore
-import remarkGridTable from '@adobe/remark-gridtables'
-import {
-  TYPE_TABLE,
-  mdast2hastGridTablesHandler
-  // @ts-ignore
-} from '@adobe/mdast-util-gridtables'
+import imarkToc from './extensions/toc'
+import imarkGfm from './extensions/gfm'
+import imarkDataMeta from './extensions/data-meta'
+import imarkAbc from './extensions/abc'
+import imarkUml from './extensions/uml'
+import imarkEcharts from './extensions/echarts'
+import imarkMermaid from './extensions/mermaid'
+import imarkRailroad from './extensions/railroad'
+import imarkWaveDrom from './extensions/wavedrom'
+import imarkVega from './extensions/vega'
 
 type rehypeOptons = import('remark-rehype').Options
 export interface RehypeOptions extends rehypeOptons {
@@ -39,16 +33,14 @@ export interface RehypeOptions extends rehypeOptons {
 const defSchema: Schema = defaultSchema
 if (defSchema.attributes) {
   defSchema.attributes['*'].push('data*')
-  defSchema.attributes['iframe'] = [
-    'src',
-    'width',
-    'height',
-    'frameBorder',
-    'allow',
-    'allowFullScreen'
-  ]
+  defSchema.attributes['iframe'] = ['src', 'width', 'height', 'frameBorder', 'allow', 'allowFullScreen']
   defSchema.attributes['link'] = ['rel', 'href']
   defSchema.attributes['style'] = ['type']
+  if ('span' in defSchema.attributes) {
+    defSchema.attributes.span.push('role', 'ariaLabel')
+  } else {
+    defSchema.attributes.span = ['role', 'ariaLabel']
+  }
 }
 if (defSchema.tagNames) defSchema.tagNames.push('style', 'iframe', 'link')
 
@@ -88,8 +80,11 @@ class Converter {
     this.plugins = {
       head: imarkHeadingId(),
       meta: imarkDataMeta(),
+      girdtables: imarkGirdTables(),
       directive: imarkDirective(),
+      emoji: imarkEmoji(),
       gfm: imarkGfm(),
+      katex: imarkKatex(),
       toc: imarkToc(),
       abc: imarkAbc(),
       uml: imarkUml(),
@@ -97,7 +92,7 @@ class Converter {
       mermaid: imarkMermaid(),
       railroad: imarkRailroad(),
       wavedrom: imarkWaveDrom(),
-      katex: imarkKatex()
+      vega: imarkVega()
     }
   }
 
@@ -134,44 +129,45 @@ class Converter {
     }
 
     let processor: Processor = unified().use<any, any, any>(remarkParse)
-    processor = processor.use<any, any, any>(remarkGridTable)
-    processor = processor.use<any, any, any>(remarkDirective)
+    let hs: Handlers = {}
     if (this.plugins) {
       for (const plugin of Object.values(this.plugins)) {
         if (plugin.remark) processor = plugin.remark(processor)
+        if (plugin.handlers) {
+          hs = {
+            ...hs,
+            ...plugin.handlers
+          }
+        }
       }
     }
     processor = processor.use<any, any, any>(remarkRehype, {
       allowDangerousHtml: true,
       clobberPrefix: schema.clobberPrefix,
-      handlers: {
-        [TYPE_TABLE]: mdast2hastGridTablesHandler()
-      },
+      handlers: hs,
       ...options
     })
-
     processor = processor.use<any, any, any>(rehypeRaw)
     if (this.plugins) {
       for (const plugin of Object.values(this.plugins)) {
         if (plugin.rehype) processor = plugin.rehype(processor)
       }
     }
-    processor = processor.use<any, any, any>(rehypeSanitize, schema)
+    // processor = processor.use<any, any, any>(rehypeSanitize, schema)
     const renders: Record<string, Render> = {}
     if (this.plugins) {
       for (const [key, plugin] of Object.entries(this.plugins)) {
         if (plugin.render) renders[key] = plugin.render
       }
     }
-
     if (options?.outFormat) {
       processor = processor.use<any, any, any>(rehypeFormat)
     }
     return processor
-      .use(rehypeStringify, {allowDangerousHtml: true})
+      .use(rehypeStringify, { allowDangerousHtml: true })
       .process(v)
       .then((file) => {
-        return {html: file.toString(), renders: renders}
+        return { html: file.toString(), renders: renders }
       })
   }
 }

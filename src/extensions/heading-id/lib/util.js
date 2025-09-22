@@ -3,7 +3,7 @@
  * @typedef {import('mdast').RootContent} RootContent
  */
 
-import {kebabCase, isEmpty} from 'lodash'
+import { kebabCase, isEmpty } from 'lodash'
 
 /**
  * extract a children text for a node.
@@ -16,11 +16,7 @@ const extractText = (children) => {
     .map((child) => {
       if ('value' in child && !isEmpty(child.value)) {
         return child.value
-      } else if (
-        'children' in child &&
-        child.children &&
-        child.children.length > 0
-      ) {
+      } else if ('children' in child && child.children && child.children.length > 0) {
         return extractText(child.children)
       } else {
         return ''
@@ -57,10 +53,11 @@ const formatDefaultId = (value) => {
  * @returns
  */
 const setNodeId = (node, id) => {
-  if (!node.data) node.data = {}
+  if (!node.data) node.data = { hProperties: {} }
+  // @ts-ignore
   if (!node.data.hProperties) node.data.hProperties = {}
   // @ts-ignore
   node.data.id = node.data.hProperties.id = id
 }
 
-export {extractText, getDefaultId, formatDefaultId, setNodeId}
+export { extractText, getDefaultId, formatDefaultId, setNodeId }

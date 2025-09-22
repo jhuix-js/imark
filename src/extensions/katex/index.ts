@@ -1,7 +1,7 @@
-import type {IMarkPlugin, Render} from '../../types'
-import {rehypeKatex, renderKatex} from './lib/index'
-import {Processor} from 'unified'
-import {deepMerge} from '../../public/utils'
+import type { IMarkPlugin, Render } from '../../types'
+import { rehypeKatex, renderKatex } from './lib/index'
+import { Processor } from 'unified'
+import { deepMerge } from '../../public/utils'
 
 export interface KatexDelimiter {
   left: string
