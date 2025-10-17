@@ -1,17 +1,16 @@
 import type { IMarkPlugin } from '../../types'
 import type { Processor } from 'unified'
 import { deepMerge } from '../../public/utils'
-import remarkGfm from 'remark-gfm'
-import { extendedTableFromMarkdownOptions } from 'mdast-util-extended-table'
-import { remarkExtendedTable, extendedTableHandlers } from 'remark-extended-table'
+import remarkGfm from '@jhuix/remark-gfm'
+import { gfmTableHastHandlers } from '@jhuix/mdast-util-gfm-table'
 
-type remarkGfmOptions = import('remark-gfm').Options
-export interface GfmOptions extends remarkGfmOptions, extendedTableFromMarkdownOptions {}
+export type GfmOptions = import('@jhuix/remark-gfm').Options
+// export interface GfmOptions extends remarkGfmOptions {}
 
 const gfmSetting: GfmOptions = {
+  colspanWithEmpty: true,
   tablePipeAlign: true,
-  tableCellPadding: true,
-  colspanWithEmpty: true
+  tableCellPadding: true
 }
 export default function imarkGfm(): IMarkPlugin {
   return {
@@ -19,9 +18,8 @@ export default function imarkGfm(): IMarkPlugin {
       deepMerge(gfmSetting, s)
     },
     remark: (p: Processor): Processor => {
-      // return p.use(remarkGfm, gfmSetting)
-      return p.use(remarkGfm, gfmSetting).use(remarkExtendedTable, gfmSetting)
+      return p.use(remarkGfm, gfmSetting)
     },
-    handlers: extendedTableHandlers
+    handlers: gfmTableHastHandlers()
   }
 }
