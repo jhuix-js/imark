@@ -12,9 +12,7 @@ import type { WaveDromOptions } from './extensions/wavedrom'
 import type { VegaEmbedOptions } from './extensions/vega'
 
 export type RenderOption =
-  | EmojiOptions
   | KatexOptions
-  | GfmOptions
   | TocOptions
   | MermaidConfig
   | EChartsInitOpts
@@ -24,9 +22,7 @@ export type RenderOption =
   | VegaEmbedOptions
 
 export type RenderOptions = {
-  emoji: EmojiOptions
   katex: KatexOptions
-  gfm: GfmOptions
   toc: TocOptions
   mermaid: MermaidConfig
   echarts: EChartsInitOpts
@@ -38,7 +34,7 @@ export type RenderOptions = {
 
 export type RenderOptionsKey = keyof RenderOptions
 
-export type RemarkSetting = KatexDelimiters | TocOptions
+export type RemarkSetting = KatexDelimiters | GfmOptions | EmojiOptions
 
 export type Render = ((tree: HTMLElement, option?: RenderOption) => void) | (() => void)
 
@@ -61,11 +57,7 @@ export interface IMarkPlugin {
   /**
    * Setting for parse markdown
    */
-  setting?:
-    | ((s: GfmOptions) => void)
-    | ((s: KatexDelimiters) => void)
-    | ((s: TocOptions) => void)
-    | ((s: EmojiOptions) => void)
+  setting?: ((s: GfmOptions) => void) | ((s: KatexDelimiters) => void) | ((s: EmojiOptions) => void)
   /**
    * Customize markdown parse by remark plugins:
    *

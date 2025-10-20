@@ -109,7 +109,7 @@ class Converter {
    * @param {RehypeOptions} [options]
    * @returns {Promise<RenderContext>}
    */
-  async toHTML(v: string, options?: RehypeOptions): Promise<RenderContext> {
+  async toHTML(v: string, remarkOptions?: RemarkSetting, rehypeOtions?: RehypeOptions): Promise<RenderContext> {
     // Allow class names by default
     let schema = this.schema
     if (!schema) {
@@ -132,6 +132,7 @@ class Converter {
     let hs: Handlers = {}
     if (this.plugins) {
       for (const plugin of Object.values(this.plugins)) {
+        if (plugin.setting) plugin.setting({ ...remarkOptions })
         if (plugin.remark) processor = plugin.remark(processor)
         if (plugin.handlers) {
           hs = {
@@ -145,7 +146,7 @@ class Converter {
       allowDangerousHtml: true,
       clobberPrefix: schema.clobberPrefix,
       handlers: hs,
-      ...options
+      ...rehypeOtions
     })
     processor = processor.use<any, any, any>(rehypeRaw)
     if (this.plugins) {
@@ -160,7 +161,7 @@ class Converter {
         if (plugin.render) renders[key] = plugin.render
       }
     }
-    if (options?.outFormat) {
+    if (rehypeOtions?.outFormat) {
       processor = processor.use<any, any, any>(rehypeFormat)
     }
     return processor

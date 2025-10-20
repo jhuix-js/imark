@@ -11,8 +11,9 @@ export type RemarkSetting = import('./types').RemarkSetting
 export type IMarkPlugins = import('./types').IMarkPlugins
 
 export interface ImarkOptions {
-  rehype: RehypeOptions
-  render: RenderOptions
+  remark?: RemarkSetting
+  rehype?: RehypeOptions
+  render?: RenderOptions
 }
 
 function hasMarkPlugin(obj: object): boolean {
@@ -65,8 +66,8 @@ class IMark {
    * @param {RehypeOptions} [options]
    * @returns {Promise<RenderContext>}
    */
-  parse(md: string, options?: RehypeOptions): Promise<RenderContext> {
-    return this.converter.toHTML(md, options)
+  parse(md: string, remarkOptions?: RemarkSetting, rephypeOptions?: RehypeOptions): Promise<RenderContext> {
+    return this.converter.toHTML(md, remarkOptions, rephypeOptions)
   }
 
   /**
@@ -80,7 +81,7 @@ class IMark {
     if (!root) {
       root = document.body
     }
-    this.parse(md, imarkOptions?.rehype).then(({ html, renders }) => {
+    this.parse(md, imarkOptions?.remark, imarkOptions?.rehype).then(({ html, renders }) => {
       loadStyle('imarks-css', gCss)
       const parent = document.createElement('div')
       parent.classList.add('imarks')

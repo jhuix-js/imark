@@ -4,14 +4,13 @@ import { deepMerge } from '../../public/utils'
 import remarkGfm from '@jhuix/remark-gfm'
 import { gfmTableHastHandlers } from '@jhuix/mdast-util-gfm-table'
 
-export type GfmOptions = import('@jhuix/remark-gfm').Options
-// export interface GfmOptions extends remarkGfmOptions {}
+export type GfmOptions = import('@jhuix/remark-gfm').FromMarkdownOption
 
 const gfmSetting: GfmOptions = {
-  colspanWithEmpty: true,
-  tablePipeAlign: true,
-  tableCellPadding: true
+  tableHeadless: true,
+  colspanWithEmpty: true
 }
+
 export default function imarkGfm(): IMarkPlugin {
   return {
     setting: (s: GfmOptions) => {
