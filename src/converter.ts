@@ -27,6 +27,10 @@ import imarkVega from './extensions/vega'
 
 type rehypeOptons = import('remark-rehype').Options
 export interface RehypeOptions extends rehypeOptons {
+  /**
+   * Whether format output after remark rehype.
+   * @type {boolean}
+   */
   outFormat?: boolean
 }
 
@@ -106,10 +110,11 @@ class Converter {
    * Convert markdown to html with additional renders
    *
    * @param {string} v
-   * @param {RehypeOptions} [options]
+   * @param {RemarkSetting} [remarkOptions]
+   * @param {RehypeOptions} [rehypeOptions]
    * @returns {Promise<RenderContext>}
    */
-  async toHTML(v: string, remarkOptions?: RemarkSetting, rehypeOtions?: RehypeOptions): Promise<RenderContext> {
+  async toHTML(v: string, remarkOptions?: RemarkSetting, rehypeOptions?: RehypeOptions): Promise<RenderContext> {
     // Allow class names by default
     let schema = this.schema
     if (!schema) {
@@ -146,7 +151,7 @@ class Converter {
       allowDangerousHtml: true,
       clobberPrefix: schema.clobberPrefix,
       handlers: hs,
-      ...rehypeOtions
+      ...rehypeOptions
     })
     processor = processor.use<any, any, any>(rehypeRaw)
     if (this.plugins) {
@@ -161,7 +166,7 @@ class Converter {
         if (plugin.render) renders[key] = plugin.render
       }
     }
-    if (rehypeOtions?.outFormat) {
+    if (rehypeOptions?.outFormat) {
       processor = processor.use<any, any, any>(rehypeFormat)
     }
     return processor

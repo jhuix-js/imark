@@ -1,8 +1,23 @@
 import { Render } from '../../../types'
 
+/**
+ * The options for render table of content.
+ */
 export interface TocOptions {
+  /**
+   * The heading regex expression.
+   * @type {string}
+   */
   heading?: string
+  /**
+   * The title of table of content.
+   * @type {string}
+   */
   title?: string
+  /**
+   * Whether compatible to parse regular expression from the main text (`p` element of html).
+   * @type {boolean}
+   */
   compatible?: boolean
 }
 

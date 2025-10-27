@@ -2,6 +2,7 @@
 import { resolve } from 'path'
 import { defineConfig } from 'rolldown-vite'
 import { nodePolyfills } from 'vite-plugin-node-polyfills'
+import CopyPlugin from 'vite-copy-plugin'
 import replace from '@rollup/plugin-replace'
 
 export default defineConfig(({ mode }) => {
@@ -20,7 +21,8 @@ export default defineConfig(({ mode }) => {
           eval: 'window.eval'
         }
       }),
-      nodePolyfills()
+      nodePolyfills(),
+      CopyPlugin([{ from: 'dist', to: 'docs/dist' }])
     ],
     build: {
       // target: 'ESNext',

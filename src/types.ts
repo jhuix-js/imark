@@ -11,6 +11,9 @@ import type { UmlOptions } from './extensions/uml'
 import type { WaveDromOptions } from './extensions/wavedrom'
 import type { VegaEmbedOptions } from './extensions/vega'
 
+/**
+ * Render options type defined.
+ */
 export type RenderOption =
   | KatexOptions
   | TocOptions
@@ -21,14 +24,49 @@ export type RenderOption =
   | WaveDromOptions
   | VegaEmbedOptions
 
+/**
+ * Render options
+ */
 export type RenderOptions = {
+  /**
+   * The options of render katex.
+   * @type {KatexOptions}
+   */
   katex: KatexOptions
+  /**
+   * The options of render toc.
+   * @type {TocOptions}
+   */
   toc: TocOptions
+  /**
+   * The options of render mermaid.
+   * @type {MermaidConfig}
+   */
   mermaid: MermaidConfig
+  /**
+   * The options of render echart.
+   * @type {EChartsInitOpts}
+   */
   echarts: EChartsInitOpts
+  /**
+   * The options of render abc.
+   * @type {AbcVisualParams}
+   */
   abc: AbcVisualParams
+  /**
+   * The options of render planuml.
+   * @type {UmlOptions}
+   */
   uml: UmlOptions
+  /**
+   * The options of render wavedrom.
+   * @type {WaveDromOptions}
+   */
   wavedrom: WaveDromOptions
+  /**
+   * The options of render vega.
+   * @type {VegaEmbedOptions}
+   */
   vega: VegaEmbedOptions
 }
 
