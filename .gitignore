@@ -2,7 +2,7 @@ coverage/
 node_modules/
 dist/
 test/
-docs/
+docs/dist/
 livedemo/
 .DS_Store
 .vscode
