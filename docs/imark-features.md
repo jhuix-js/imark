@@ -155,6 +155,28 @@ Table header can be eliminated. (optional: tableHeadless)
 
 ### Grid table
 
+```
++-------------------+------+
+| Table Headings    | Here |
++--------+----------+------+
+| Sub    | Headings | Too  |
++========+=================+
+| cell   | column spanning |
+| spans  +---------:+------+
+| rows   |   normal | cell |
++---v----+:---------------:+
+|        | cells can be    |
+|        | *formatted*     |
+|        | **paragraphs**  |
+|        | ```             |
+| multi  | and contain     |
+| line   | blocks          |
+| cells  | ```             |
++========+=========:+======+
+| footer |    cells |      |
++--------+----------+------+
+```
+
 +-------------------+------+
 | Table Headings    | Here |
 +--------+----------+------+
