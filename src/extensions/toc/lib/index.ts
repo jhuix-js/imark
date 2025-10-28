@@ -63,7 +63,7 @@ function createHeadingElement(
       if (headingLevel > 1) {
         toc.classList.add(`toc-level-${headingLevel}`)
       } else {
-        toc.classList.add('toc-main')
+        toc.classList.add('toc-main', 'toc-level-1')
       }
     }
     toc = toc.appendChild(doc.createElement('li'))
@@ -118,7 +118,7 @@ function appendTocElement(
   if (headingLevel > currTocNode.preLevel) {
     currTocNode.preLevel++
     while (headingLevel > currTocNode.preLevel) {
-      currTocNode.toc = createHeadingElement(doc, null, currTocNode.toc, headingLevel, true)
+      currTocNode.toc = createHeadingElement(doc, null, currTocNode.toc, currTocNode.preLevel, true)
       currTocNode.preLevel++
     }
     currTocNode.toc = createHeadingElement(doc, element, currTocNode.toc, headingLevel, true)

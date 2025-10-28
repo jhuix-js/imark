@@ -40,7 +40,7 @@ export function remarkDirective() {
                     (data.hProperties.className = [data.hProperties.className])
                   : data.hProperties.className
                 : (data.hProperties.className = [])
-              const typeName = name === 'alert' || name === '注意' ? 'alert' : 'container'
+              const typeName = name === 'alert' || name === '注意' ? 'alert' : 'note'
               className.unshift(typeName)
               className.unshift('imark-container')
               if (data.hProperties.afterStyle || data.hProperties.beforeStyle) {

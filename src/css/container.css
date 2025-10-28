@@ -10,6 +10,10 @@
     border: 1px solid #eee;
     border-radius: 0.25rem;
 
+    &.aftertriangle {
+      margin-bottom: 2rem;
+    }
+
     &.aftertriangle::after {
       content: '\00a0';
       width: 0;
@@ -22,6 +26,11 @@
       z-index: -1;
       bottom: -30px;
     }
+
+    &.beforetriangle {
+      margin-top: 2rem;
+    }
+
     &.beforetriangle::before {
       content: '\00a0';
       width: 0;
@@ -35,53 +44,53 @@
       top: -30px;
     }
 
-    &.container {
+    &.note {
       border-left-width: 0.5rem;
       border-right-width: 0.5rem;
 
       &.tip {
-        border-color: #357ebd;
+        border-color: #2b85e4;
         &.aftertriangle::after {
-          border-color: #357ebd transparent transparent transparent;
+          border-color: #2b85e4 transparent transparent transparent;
         }
         &.beforetriangle::before {
-          border-color: transparent transparent #357ebd transparent;
+          border-color: transparent transparent #2b85e4 transparent;
         }
       }
       &.info {
-        border-color: rgb(36, 107, 251);
+        border-color: #2979ff;
         &.aftertriangle::after {
-          border-color: rgb(36, 107, 251) transparent transparent transparent;
+          border-color: #2979ff transparent transparent transparent;
         }
         &.beforetriangle::before {
-          border-color: transparent transparent rgb(36, 107, 251) transparent;
+          border-color: transparent transparent #2979ff transparent;
         }
       }
       &.warning {
-        border-color: #f0ad4e;
+        border-color: #f29100;
         &.aftertriangle::after {
-          border-color: #f0ad4e transparent transparent transparent;
+          border-color: #f29100 transparent transparent transparent;
         }
         &.beforetriangle::before {
-          border-color: transparent transparent #f0ad4e transparent;
+          border-color: transparent transparent #f29100 transparent;
         }
       }
       &.error {
-        border-color: #d9534f;
+        border-color: #dd6161;
         &.aftertriangle::after {
-          border-color: #d9534f transparent transparent transparent;
+          border-color: #dd6161 transparent transparent transparent;
         }
         &.beforetriangle::before {
-          border-color: transparent transparent #d9534f transparent;
+          border-color: transparent transparent #dd6161 transparent;
         }
       }
       &.success {
-        border-color: #67c23a;
+        border-color: #18b566;
         &.aftertriangle::after {
-          border-color: #67c23a transparent transparent transparent;
+          border-color: #18b566 transparent transparent transparent;
         }
         &.beforetriangle::before {
-          border-color: transparent transparent #67c23a transparent;
+          border-color: transparent transparent #18b566 transparent;
         }
       }
     }
@@ -139,7 +148,8 @@
     }
   }
 
-  .container-title,.media-title {
+  .container-title,
+  .media-title {
     font-size: 1.25em;
     font-weight: 700;
     line-height: 1.2;

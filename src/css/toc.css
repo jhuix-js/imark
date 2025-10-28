@@ -104,6 +104,10 @@
 
     .toc-main {
       flex-grow: 1;
+      margin-left: 1rem;
+      ul {
+        margin-left: 2rem;
+      }
     }
     .toc-chapter {
       color: rgb(0, 137, 255);
@@ -112,7 +116,6 @@
     ul {
       display: block;
       position: relative;
-      margin-left: 2rem;
       padding-left: 0;
       li {
         width: 100%;
