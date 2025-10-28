@@ -1,6 +1,6 @@
 {
   "name": "@jhuix/imark",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "a markdown to html converter",
   "license": "MIT",
   "keywords": [

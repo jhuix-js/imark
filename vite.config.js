@@ -6,7 +6,6 @@ import replace from '@rollup/plugin-replace'
 
 export default defineConfig(({ mode }) => {
   return {
-    // root: "livedemo",
     resolve: {
       alias: {
         zlib: '@jspm/core/nodelibs/zlib'
