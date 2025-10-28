@@ -4,12 +4,13 @@
 
 [iMark](https://github.com/jhuix-js/imark) is a javascript's lib that make markdown to html with some extensions features(include diagrams of abcjs, echarts, mermaid, plantuml, railroad, wavedrom, katex, gird tables, gfm extended tables etc.).
 
+> If you think the imark library can help you or also hope to encourage the author, click on the top right corner to give me a [Star](https://github.com/jhuix-js/imark)⭐️.
 
 ## Support Features
 
 Common Markdown Syntax, refer to the document -- [Markdown Syntax](https://github.com/showdownjs/showdown/wiki/Showdown's-Markdown-syntax).
 
-Extensions features as follows, refer to the docment -- [iMark's Features](https://jhuix-js.github.io/imark/index.html):
+Extensions features as follows, preview as the document -- [iMark's Features](https://jhuix-js.github.io/imark/index.html):
 
 * [Table](https://jhuix-js.github.io/imark/index.html#1-table)
 
@@ -149,5 +150,5 @@ See [iMark's API](https://github.com/jhuix-js/imark/blob/main/docs/api.md).
 
 ## License
 
-[MIT](LICENSE) © [Jhuix](mailto:jhuix0117@gmail.com) (Hui Jin)
+[MIT](LICENSE) © 2025 [Jhuix](mailto:jhuix0117@gmail.com) (Hui Jin)
 
