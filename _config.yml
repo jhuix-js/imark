@@ -1,1 +1,15 @@
-include: ['dist/*.js', “docs”]
+include: ['dist/*.js', 'docs']
+exclude:
+  [
+    'src',
+    'node_modules',
+    'types',
+    'test',
+    '.gitignore',
+    '.npmrc',
+    '.prettierignore',
+    '.prettierrc',
+    'package.json',
+    'tsconfig.json',
+    'vite.config.js'
+  ]
