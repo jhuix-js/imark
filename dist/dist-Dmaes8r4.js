@@ -83,5 +83,3 @@ var browser, process, cachedSetTimeout, cachedClearTimeout, queue, draining, cur
 	}, browserExports = browser.exports, process$1 = /* @__PURE__ */ getDefaultExportFromCjs(browserExports);
 }));
 export { process$1 as n, init_dist as t };
-
-//# sourceMappingURL=dist-Dmaes8r4.js.map

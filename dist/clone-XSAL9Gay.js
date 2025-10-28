@@ -5,5 +5,3 @@ function clone(r) {
 }
 var clone_default = clone;
 export { clone_default as t };
-
-//# sourceMappingURL=clone-XSAL9Gay.js.map

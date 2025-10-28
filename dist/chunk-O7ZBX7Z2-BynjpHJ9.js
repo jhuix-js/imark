@@ -24,5 +24,3 @@ function createArchitectureServices(e = EmptyFileSystem) {
 }
 __name(createArchitectureServices, "createArchitectureServices");
 export { createArchitectureServices as n, ArchitectureModule as t };
-
-//# sourceMappingURL=chunk-O7ZBX7Z2-BynjpHJ9.js.map

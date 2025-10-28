@@ -17,5 +17,3 @@ function createGitGraphServices(l = EmptyFileSystem) {
 }
 __name(createGitGraphServices, "createGitGraphServices");
 export { createGitGraphServices as n, GitGraphModule as t };
-
-//# sourceMappingURL=chunk-S6J4BHB3-Bl6daM-q.js.map

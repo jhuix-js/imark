@@ -1603,5 +1603,3 @@ var draw = /* @__PURE__ */ __name(async function(e, r, i, o) {
 `, "getStyles")
 };
 export { diagram };
-
-//# sourceMappingURL=erDiagram-Q2GNP2WA-DTSJhfig.js.map

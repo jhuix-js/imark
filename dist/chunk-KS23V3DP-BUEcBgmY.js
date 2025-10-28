@@ -133,5 +133,3 @@ var package_default = {
 	publishConfig: { access: "public" }
 };
 export { package_default as t };
-
-//# sourceMappingURL=chunk-KS23V3DP-BUEcBgmY.js.map

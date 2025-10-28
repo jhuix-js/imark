@@ -76,5 +76,3 @@ function arc_default() {
 	}, O;
 }
 export { arc_default as t };
-
-//# sourceMappingURL=arc-cZaP7Il9.js.map

@@ -1382,5 +1382,3 @@ function canonicalize(d) {
 	}), B;
 }
 export { layout as t };
-
-//# sourceMappingURL=dagre-YdLLCUGf.js.map

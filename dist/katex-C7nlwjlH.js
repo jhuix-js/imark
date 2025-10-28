@@ -22091,5 +22091,3 @@ var renderToString = function(e, t) {
 	__domTree
 };
 export { defineMacro as a, katex as c, renderToHTMLTree as d, renderToString as f, defineFunction as i, render as l, version as m, SETTINGS_SCHEMA as n, defineSymbol as o, setFontMetrics as p, __domTree as r, generateParseTree as s, ParseError as t, renderToDomTree as u };
-
-//# sourceMappingURL=katex-C7nlwjlH.js.map

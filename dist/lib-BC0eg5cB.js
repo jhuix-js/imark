@@ -2158,5 +2158,3 @@ var require_stringify = /* @__PURE__ */ __commonJSMin(((e, O) => {
 	};
 }));
 export default require_lib();
-
-//# sourceMappingURL=lib-BC0eg5cB.js.map

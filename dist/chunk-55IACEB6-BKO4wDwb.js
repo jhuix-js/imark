@@ -4,5 +4,3 @@ var getDiagramElement = /* @__PURE__ */ __name((e, n) => {
 	return n === "sandbox" && (r = select_default("#i" + e)), select_default(n === "sandbox" ? r.nodes()[0].contentDocument.body : "body").select(`[id="${e}"]`);
 }, "getDiagramElement");
 export { getDiagramElement as t };
-
-//# sourceMappingURL=chunk-55IACEB6-BKO4wDwb.js.map

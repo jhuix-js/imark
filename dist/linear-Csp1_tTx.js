@@ -212,5 +212,3 @@ function linear() {
 	}, initRange.apply(s, arguments), linearish(s);
 }
 export { number$1 as _, copy as a, ascending as b, number as c, precisionFixed_default as d, tickStep as f, bisect_default as g, bisectRight as h, continuous as i, precisionRound_default as l, bisectLeft as m, linearish as n, identity as o, ticks as p, tickFormat as r, transformer as s, linear as t, precisionPrefix_default as u, numbers as v, bisector as y };
-
-//# sourceMappingURL=linear-Csp1_tTx.js.map

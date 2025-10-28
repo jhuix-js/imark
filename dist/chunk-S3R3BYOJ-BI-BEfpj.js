@@ -400,5 +400,3 @@ function isLabelCoordinateInPath(o, F) {
 }
 __name(isLabelCoordinateInPath, "isLabelCoordinateInPath");
 export { wrapLabel as _, decodeEntities as a, merge_default as b, getEdgeId as c, interpolateToCurve as d, isDetailedError as f, utils_default as g, removeDirectives as h, cleanAndMerge as i, getStylesFromArray as l, random as m, calculateTextHeight as n, encodeEntities as o, parseFontSize as p, calculateTextWidth as r, generateId as s, ZERO_WIDTH_SPACE as t, handleUndefinedAttr as u, bumpX as v, bumpY as y };
-
-//# sourceMappingURL=chunk-S3R3BYOJ-BI-BEfpj.js.map

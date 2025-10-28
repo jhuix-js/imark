@@ -1932,5 +1932,3 @@ var setConf = /* @__PURE__ */ __name(function() {
 `, "getStyles")
 };
 export { diagram };
-
-//# sourceMappingURL=ganttDiagram-LVOFAZNH-Y2-wACpB.js.map

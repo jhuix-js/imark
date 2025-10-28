@@ -72,5 +72,3 @@ var pointTransformer = /* @__PURE__ */ __name((e) => Array.isArray(e) ? {
 	}, "y")
 }), "getLineFunctionsWithOffset");
 export { markerOffsets as n, markerOffsets2 as r, getLineFunctionsWithOffset as t };
-
-//# sourceMappingURL=chunk-HN2XXSSU-p3ji0EC3.js.map

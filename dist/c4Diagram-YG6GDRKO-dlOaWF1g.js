@@ -2957,5 +2957,3 @@ var c4Renderer_default = {
 	}, "init")
 };
 export { diagram };
-
-//# sourceMappingURL=c4Diagram-YG6GDRKO-dlOaWF1g.js.map

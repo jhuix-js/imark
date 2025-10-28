@@ -298,5 +298,3 @@ var populate = /* @__PURE__ */ __name((e, f) => {
 	}, "getStyles")
 };
 export { diagram };
-
-//# sourceMappingURL=diagram-PSM6KHXK-B1nZFAOc.js.map

@@ -77,5 +77,3 @@ function withPath(e) {
 	}, () => new Path(t);
 }
 export { constant_default as n, path as r, withPath as t };
-
-//# sourceMappingURL=path-D7waZtl4.js.map

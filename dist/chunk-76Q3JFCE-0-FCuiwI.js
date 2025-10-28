@@ -17,5 +17,3 @@ function createPacketServices(l = EmptyFileSystem) {
 }
 __name(createPacketServices, "createPacketServices");
 export { createPacketServices as n, PacketModule as t };
-
-//# sourceMappingURL=chunk-76Q3JFCE-0-FCuiwI.js.map

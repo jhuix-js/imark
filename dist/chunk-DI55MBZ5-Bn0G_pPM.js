@@ -1992,5 +1992,3 @@ g.stateGroup line {
 }
 `, "getStyles");
 export { styles_default as i, stateDiagram_default as n, stateRenderer_v3_unified_default as r, StateDB as t };
-
-//# sourceMappingURL=chunk-DI55MBZ5-Bn0G_pPM.js.map

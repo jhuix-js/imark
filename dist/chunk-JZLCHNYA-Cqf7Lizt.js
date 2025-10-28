@@ -4859,5 +4859,3 @@ var setNodeElem = /* @__PURE__ */ __name((St, lr) => {
 	return St.clusterNode ? lr.attr("transform", "translate(" + (St.x + ur - St.width / 2) + ", " + (St.y - St.height / 2 - 8) + ")") : lr.attr("transform", "translate(" + St.x + ", " + St.y + ")"), ur;
 }, "positionNode");
 export { insertNode as a, positionNode as c, at as d, insertCluster as i, setNodeElem as l, clear2 as n, isValidShape as o, createLabel_default as r, labelHelper as s, clear as t, updateNodeBounds as u };
-
-//# sourceMappingURL=chunk-JZLCHNYA-Cqf7Lizt.js.map

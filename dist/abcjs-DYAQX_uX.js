@@ -41084,5 +41084,3 @@ var require_version = /* @__PURE__ */ __commonJSMin(((e, t) => {
 	}, u.Editor = require_abc_editor(), u.EditArea = require_abc_editarea(), i.exports = u;
 }));
 export default require_abcjs();
-
-//# sourceMappingURL=abcjs-DYAQX_uX.js.map

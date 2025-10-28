@@ -32,5 +32,3 @@ var parser = { parse: /* @__PURE__ */ __name(async (i) => {
 	}, "draw") }
 };
 export { diagram };
-
-//# sourceMappingURL=infoDiagram-F6ZHWCRC-D_eQW5gy.js.map

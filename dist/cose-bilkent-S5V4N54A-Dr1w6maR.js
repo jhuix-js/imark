@@ -2250,5 +2250,3 @@ var render2 = /* @__PURE__ */ __name(async (e, t, { insertCluster: n, insertEdge
 	})), s.debug("Cose-bilkent rendering completed");
 }, "render");
 export { render2 as render };
-
-//# sourceMappingURL=cose-bilkent-S5V4N54A-Dr1w6maR.js.map

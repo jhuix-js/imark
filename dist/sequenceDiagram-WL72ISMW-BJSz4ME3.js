@@ -3562,5 +3562,3 @@ var buildNoteModel = /* @__PURE__ */ __name(async function(i, u, d) {
 	}, "init")
 };
 export { diagram };
-
-//# sourceMappingURL=sequenceDiagram-WL72ISMW-BJSz4ME3.js.map

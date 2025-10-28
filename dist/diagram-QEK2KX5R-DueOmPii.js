@@ -228,5 +228,3 @@ var renderer = { draw }, genIndexStyles = /* @__PURE__ */ __name((t, k) => {
 	}, "styles")
 };
 export { diagram };
-
-//# sourceMappingURL=diagram-QEK2KX5R-DueOmPii.js.map

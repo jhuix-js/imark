@@ -174,5 +174,3 @@ var DEFAULT_PIE_CONFIG = defaultConfig_default.pie, DEFAULT_PIE_DB = {
 	styles: pieStyles_default
 };
 export { diagram };
-
-//# sourceMappingURL=pieDiagram-ADFJNKIX-rRVhhCxf.js.map

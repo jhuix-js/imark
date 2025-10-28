@@ -485,5 +485,3 @@ var insertMarkers = /* @__PURE__ */ __name((t, o, s, c) => {
 	}, "requirement_contains")
 }, markers_default = insertMarkers;
 export { positionEdgeLabel as a, markers_default as i, insertEdge as n, insertEdgeLabel as r, clear as t };
-
-//# sourceMappingURL=chunk-QXUST7PY-DE6lURYz.js.map

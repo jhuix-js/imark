@@ -37,5 +37,3 @@ var render = /* @__PURE__ */ __name(async (e, h) => {
 	throw Error(`Both layout algorithms ${e} and ${g} are not registered.`);
 }, "getRegisteredLayoutAlgorithm");
 export { registerLayoutLoaders as n, render as r, getRegisteredLayoutAlgorithm as t };
-
-//# sourceMappingURL=chunk-N4CR4FBY-vW6kPLGX.js.map

@@ -298,5 +298,3 @@ var clusterDb = /* @__PURE__ */ new Map(), descendants = /* @__PURE__ */ new Map
 	await recursiveRender(T, w, r.type, r.diagramId, void 0, O);
 }, "render");
 export { render };
-
-//# sourceMappingURL=dagre-6UL2VRFP-D_0HB79b.js.map

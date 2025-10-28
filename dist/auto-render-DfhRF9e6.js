@@ -116,5 +116,3 @@ var findEndOfMath = function(e, t, n) {
 	], n.ignoredClasses = n.ignoredClasses || [], n.errorCallback = n.errorCallback || console.error, n.macros = n.macros || {}, renderElem(e, n);
 };
 export { renderMathInElement as default };
-
-//# sourceMappingURL=auto-render-DfhRF9e6.js.map

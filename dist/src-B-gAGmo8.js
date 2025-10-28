@@ -1433,5 +1433,3 @@ function transform(e) {
 	return e.__zoom;
 }
 export { setLogLevel as a, log as i, __export as n, require_dayjs_min as o, __name as r, select_default$1 as t };
-
-//# sourceMappingURL=src-B-gAGmo8.js.map

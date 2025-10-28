@@ -899,5 +899,3 @@ var setParseErrorHandler = /* @__PURE__ */ __name(function(e) {
 * Wait for document loaded before starting the execution
 */
 export { mermaid_default as default };
-
-//# sourceMappingURL=mermaid.core-CNYZJ1We.js.map

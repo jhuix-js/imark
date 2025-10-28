@@ -2018,5 +2018,3 @@ var diagram = {
 	}, "draw") }
 };
 export { diagram };
-
-//# sourceMappingURL=xychartDiagram-PRI3JC2R-BMVPYIVP.js.map

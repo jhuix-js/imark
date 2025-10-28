@@ -47,5 +47,3 @@ var require_constants = /* @__PURE__ */ __commonJSMin(((e) => {
 	e.sanitizeUrl = s;
 }));
 export { require_dist as t };
-
-//# sourceMappingURL=dist-CUheKjZU.js.map

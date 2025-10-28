@@ -880,5 +880,3 @@ var diagram = {
 	renderer: sankeyRenderer_default
 };
 export { diagram };
-
-//# sourceMappingURL=sankeyDiagram-TZEHDZUN-DFlixj-V.js.map

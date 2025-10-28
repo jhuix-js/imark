@@ -146,5 +146,3 @@ var DEFAULT_PACKET_CONFIG = defaultConfig_default.packet, PacketDB = class {
 	}, "styles")
 };
 export { diagram };
-
-//# sourceMappingURL=diagram-S2PKOQOG-CCGHwnhd.js.map

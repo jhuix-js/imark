@@ -829,5 +829,3 @@ var drawNode = /* @__PURE__ */ __name(function(e, S, C, w) {
 `, "getStyles")
 };
 export { diagram };
-
-//# sourceMappingURL=timeline-definition-IT6M3QCI-Dach8vBl.js.map

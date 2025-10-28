@@ -46,5 +46,3 @@ var MermaidParseError = class extends Error {
 	static #_ = __name(this, "MermaidParseError");
 };
 export { parse as t };
-
-//# sourceMappingURL=mermaid-parser.core-D7DiBjb7.js.map

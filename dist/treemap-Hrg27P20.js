@@ -204,5 +204,3 @@ function treemap_default() {
 	}, b;
 }
 export { slice_default as a, constantZero as c, Node as d, computeHeight as f, squarify_default as i, constant_default as l, phi as n, dice_default as o, hierarchy as p, squarifyRatio as r, round_default as s, treemap_default as t, optional as u };
-
-//# sourceMappingURL=treemap-Hrg27P20.js.map

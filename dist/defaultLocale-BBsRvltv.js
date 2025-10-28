@@ -175,5 +175,3 @@ function defaultLocale(e) {
 	return locale = locale_default(e), format = locale.format, formatPrefix = locale.formatPrefix, locale;
 }
 export { exponent_default as a, formatSpecifier as i, formatPrefix as n, locale_default as r, format as t };
-
-//# sourceMappingURL=defaultLocale-BBsRvltv.js.map

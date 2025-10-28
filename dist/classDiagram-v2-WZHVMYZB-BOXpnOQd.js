@@ -33,5 +33,3 @@ var diagram = {
 	}, "init")
 };
 export { diagram };
-
-//# sourceMappingURL=classDiagram-v2-WZHVMYZB-BOXpnOQd.js.map

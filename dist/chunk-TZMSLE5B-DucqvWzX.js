@@ -54,5 +54,3 @@ var import_dist = /* @__PURE__ */ __toESM(require_dist(), 1), drawRect = /* @__P
 	tspan: !0
 }), "getTextObj");
 export { drawText as a, drawRect as i, drawEmbeddedImage as n, getNoteRect as o, drawImage as r, getTextObj as s, drawBackgroundRect as t };
-
-//# sourceMappingURL=chunk-TZMSLE5B-DucqvWzX.js.map

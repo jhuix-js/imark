@@ -636,5 +636,3 @@ var prettyPrint = /* @__PURE__ */ __name(function() {
 `, "getStyles")
 };
 export { diagram };
-
-//# sourceMappingURL=gitGraphDiagram-NY62KEGX-Bwm3yyui.js.map

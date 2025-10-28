@@ -836,5 +836,3 @@ function sleep(a) {
 	frame || (timeout &&= clearTimeout(timeout), a - clockNow > 24 ? (a < Infinity && (timeout = setTimeout(wake, a - clock.now() - clockSkew)), interval &&= clearInterval(interval)) : (interval ||= (clockLast = clock.now(), setInterval(poke, pokeDelay)), frame = 1, setFrame(wake)));
 }
 export { hsl as _, piecewise as a, interpolateTransformSvg as c, string_default as d, number_default as f, color as g, lab$1 as h, src_exports as i, round_default as l, hcl as m, now as n, hcl_default as o, rgb_default as p, timer as r, interpolateTransformCss as s, Timer as t, value_default as u, rgb as v, dispatch_default as y };
-
-//# sourceMappingURL=timer-Bp1bAW5T.js.map

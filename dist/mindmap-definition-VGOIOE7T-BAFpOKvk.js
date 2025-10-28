@@ -960,5 +960,3 @@ var mindmap_default = parser, nodeType = {
 `, "getStyles")
 };
 export { diagram };
-
-//# sourceMappingURL=mindmap-definition-VGOIOE7T-BAFpOKvk.js.map

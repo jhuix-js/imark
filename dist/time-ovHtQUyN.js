@@ -826,5 +826,3 @@ function time() {
 	return initRange.apply(calendar(timeTicks, timeTickInterval, timeYear, timeMonth, timeSunday, timeDay, timeHour, timeMinute, second, timeFormat).domain([new Date(2e3, 0, 1), new Date(2e3, 0, 2)]), arguments);
 }
 export { nice as A, utcDay as C, utcMinute as D, timeMinute as E, max as M, second as O, timeDay as S, utcHour as T, timeSunday as _, utcFormat as a, timeWednesday as b, utcTickInterval as c, utcYear as d, timeMonth as f, timeSaturday as g, timeMonday as h, timeParse as i, min as j, millisecond as k, utcTicks as l, timeFriday as m, time as n, utcParse as o, utcMonth as p, timeFormat as r, formatLocale as s, calendar as t, timeYear as u, timeThursday as v, timeHour as w, utcSunday as x, timeTuesday as y };
-
-//# sourceMappingURL=time-ovHtQUyN.js.map

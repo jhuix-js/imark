@@ -4054,5 +4054,3 @@ var diagram = {
 	styles: architectureStyles_default
 };
 export { diagram };
-
-//# sourceMappingURL=architectureDiagram-VXUJARFQ-DSisUxyj.js.map

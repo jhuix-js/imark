@@ -23,5 +23,3 @@ function initInterpolator(e, t) {
 	return this;
 }
 export { initRange as n, initInterpolator as t };
-
-//# sourceMappingURL=init-ULMCeUqd.js.map

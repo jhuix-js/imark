@@ -21,5 +21,3 @@ var setupViewPortForSVG = /* @__PURE__ */ __name((n, i, o, s) => {
 	};
 }, "calculateDimensionsWithPadding"), createViewBox = /* @__PURE__ */ __name((e, n, r, i, a) => `${e - a} ${n - a} ${r} ${i}`, "createViewBox");
 export { setupViewPortForSVG as t };
-
-//# sourceMappingURL=chunk-QN33PNHL-DXOPcIi5.js.map

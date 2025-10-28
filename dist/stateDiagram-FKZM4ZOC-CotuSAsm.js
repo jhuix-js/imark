@@ -224,5 +224,3 @@ var drawStartState = /* @__PURE__ */ __name((e) => e.append("circle").attr("clas
 	}, "init")
 };
 export { diagram };
-
-//# sourceMappingURL=stateDiagram-FKZM4ZOC-CotuSAsm.js.map

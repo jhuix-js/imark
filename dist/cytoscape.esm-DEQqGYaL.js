@@ -18107,5 +18107,3 @@ cytoscape.use = function(e) {
 	return warnings(e);
 }, cytoscape.version = version, cytoscape.stylesheet = cytoscape.Stylesheet = _Stylesheet;
 export { cytoscape as t };
-
-//# sourceMappingURL=cytoscape.esm-DEQqGYaL.js.map

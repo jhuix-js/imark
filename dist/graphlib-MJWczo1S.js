@@ -221,5 +221,3 @@ function edgeObjToId(e, g) {
 	return edgeArgsToId(e, g.v, g.w, g.name);
 }
 export { Graph as t };
-
-//# sourceMappingURL=graphlib-MJWczo1S.js.map

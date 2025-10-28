@@ -75,5 +75,3 @@ function ordinal() {
 	}, initRange.apply(c, arguments), c;
 }
 export { ordinal as n, InternSet as r, implicit as t };
-
-//# sourceMappingURL=ordinal-CN4lqhtQ.js.map

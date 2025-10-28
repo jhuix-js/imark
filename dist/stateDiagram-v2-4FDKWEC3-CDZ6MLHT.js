@@ -32,5 +32,3 @@ var diagram = {
 	}, "init")
 };
 export { diagram };
-
-//# sourceMappingURL=stateDiagram-v2-4FDKWEC3-CDZ6MLHT.js.map

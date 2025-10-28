@@ -32823,5 +32823,3 @@ async function _embed(t, n, r = {}, i) {
 	};
 }
 export { DEFAULT_ACTIONS, embed as default, guessMode, vega, vegaLite };
-
-//# sourceMappingURL=embed-BfTN2T57.js.map

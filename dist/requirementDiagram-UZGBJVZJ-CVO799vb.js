@@ -2194,5 +2194,3 @@ var draw = /* @__PURE__ */ __name(async function(n, r, i, a) {
 	styles: styles_default
 };
 export { diagram };
-
-//# sourceMappingURL=requirementDiagram-UZGBJVZJ-CVO799vb.js.map

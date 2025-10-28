@@ -971,5 +971,3 @@ var kanban_default = parser, nodes = [], sections = [], cnt = 0, elements = {}, 
 `, "getStyles")
 };
 export { diagram };
-
-//# sourceMappingURL=kanban-definition-3W4ZIXB7-BEa3mliQ.js.map

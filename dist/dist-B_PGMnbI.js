@@ -802,5 +802,3 @@ var buffer, base64Js, lookup, revLookup, Arr, code, i, len, ieee754, Buffer, ini
 	})(buffer), Buffer = buffer.Buffer, buffer.Blob, buffer.BlobOptions, buffer.Buffer, buffer.File, buffer.FileOptions, buffer.INSPECT_MAX_BYTES, buffer.SlowBuffer, buffer.TranscodeEncoding, buffer.atob, buffer.btoa, buffer.constants, buffer.isAscii, buffer.isUtf8, buffer.kMaxLength, buffer.kStringMaxLength, buffer.resolveObjectURL, buffer.transcode;
 }));
 export { init_dist as n, Buffer as t };
-
-//# sourceMappingURL=dist-B_PGMnbI.js.map

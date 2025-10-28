@@ -1831,5 +1831,3 @@ var createText = /* @__PURE__ */ __name(async (s, l = "", { style: u = "", isTit
 	}
 }, "createText");
 export { replaceIconSubstring as a, registerIconPacks as i, createText as n, unknownIcon as o, getIconSVG as r, dedent as s, computeDimensionOfText as t };
-
-//# sourceMappingURL=chunk-JA3XYJ7Z-DLTLD5Qe.js.map

@@ -28,5 +28,3 @@ function line_default(o, s) {
 	}, p;
 }
 export { x as n, y as r, line_default as t };
-
-//# sourceMappingURL=line-Cl_B2mnJ.js.map

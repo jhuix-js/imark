@@ -3106,5 +3106,3 @@ g.classGroup line {
 	}, "getDir")
 };
 export { styles_default as i, classDiagram_default as n, classRenderer_v3_unified_default as r, ClassDB as t };
-
-//# sourceMappingURL=chunk-B4BG7PRW-DvcL10LZ.js.map

@@ -883,5 +883,3 @@ var conf = getConfig2().journey, leftMargin = 0, draw = /* @__PURE__ */ __name(f
 	}, "init")
 };
 export { diagram };
-
-//# sourceMappingURL=journeyDiagram-XKPGCS4Q-DKau_CMM.js.map

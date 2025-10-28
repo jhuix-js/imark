@@ -5,5 +5,3 @@ var selectSvgElement = /* @__PURE__ */ __name((e) => {
 	return r === "sandbox" && (i = select_default((select_default(`#i${e}`).node()?.contentDocument ?? document).body)), i.select(`#${e}`);
 }, "selectSvgElement");
 export { selectSvgElement as t };
-
-//# sourceMappingURL=chunk-EXTU4WIE-Cl0HIDRQ.js.map

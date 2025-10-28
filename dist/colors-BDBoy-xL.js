@@ -3,5 +3,3 @@ function colors_default(e) {
 	return n;
 }
 export { colors_default as t };
-
-//# sourceMappingURL=colors-BDBoy-xL.js.map

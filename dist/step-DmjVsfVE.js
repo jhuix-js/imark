@@ -672,5 +672,3 @@ function stepAfter(d) {
 	return new Step(d, 1);
 }
 export { basis_default as _, monotoneX as a, catmullRomOpen_default as c, cardinalOpen_default as d, cardinalClosed_default as f, basisClosed_default as g, basisOpen_default as h, natural_default as i, catmullRomClosed_default as l, bundle_default as m, stepBefore as n, monotoneY as o, cardinal_default as p, step_default as r, linearClosed_default as s, stepAfter as t, catmullRom_default as u, linear_default as v };
-
-//# sourceMappingURL=step-DmjVsfVE.js.map
