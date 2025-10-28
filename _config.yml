@@ -1,4 +1,4 @@
-include: ['dist/*.js', 'docs']
+include: ['.htaccess', 'dist', 'docs', 'dist/_base*.js']
 exclude:
   [
     'src',
