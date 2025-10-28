@@ -5,6 +5,36 @@
 [iMark](https://github.com/jhuix-js/imark) is a javascript's lib that make markdown to html with some extensions features(include diagrams of abcjs, echarts, mermaid, plantuml, railroad, wavedrom, katex, gird tables, gfm extended tables etc.).
 
 
+## Support Features
+
+Common Markdown Syntax, refer to the document -- [Markdown Syntax](https://github.com/showdownjs/showdown/wiki/Showdown's-Markdown-syntax).
+
+Extensions features as follows, refer to the docment -- [iMark's Features](https://jhuix-js.github.io/imark/index.html):
+
+* [Table](https://jhuix-js.github.io/imark/index.html#1-table)
+
+* [Table Of Contents](https://jhuix-js.github.io/imark/index.html#2-table-of-contents)
+
+* [Footnotes](https://jhuix-js.github.io/imark/index.html#3-footnotes)
+
+* [Container](https://jhuix-js.github.io/imark/index.html#4-container)
+
+* [LaTex and Ascii math](https://jhuix-js.github.io/imark/index.html#5-latex-math-and-asciimath)
+
+* [Plantuml](https://jhuix-js.github.io/imark/index.html#7-plantuml)
+
+* [Mermaid diagrams](https://jhuix-js.github.io/imark/index.html#6-mermaid)
+
+* [Railroad diagrams](https://jhuix-js.github.io/imark/index.html#8-railroad)
+
+* [WaveDrom diagrams](https://jhuix-js.github.io/imark/index.html#9-wavedrom)
+
+* [ECharts diagrams](https://jhuix-js.github.io/imark/index.html#10-echarts)
+
+* [Vega diagrams](https://jhuix-js.github.io/imark/index.html#11-vega)
+
+* [ABC](https://jhuix-js.github.io/imark/index.html#12-abc)
+
 ## Usage
 
 ### Installation
@@ -116,3 +146,8 @@ See [iMark's API](https://github.com/jhuix-js/imark/blob/main/docs/api.md).
       render(md: string, root?: HTMLElement, imarkOptions?: IMarkOptions)
 
   Render markdown to a html element.
+
+## License
+
+[MIT](LICENSE) © [Jhuix](mailto:jhuix0117@gmail.com) (Hui Jin)
+
