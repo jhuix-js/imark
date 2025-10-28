@@ -38,6 +38,13 @@ export default defineConfig(({ mode }) => {
         // 确保外部化处理那些你不想打包进库的依赖
         external: ['vite', 'typescript'],
         output: {
+          chunkFileNames: (chunkInfo) => {
+            if (chunkInfo.name[0] === '_' || chunkInfo.name[0] === '.') {
+              const name = chunkInfo.name.replace(/^[_.]+/, '')
+              return `${name}-[hash].js`
+            }
+            return '[name]-[hash].js'
+          },
           // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
           globals: {
             imark: 'imark'

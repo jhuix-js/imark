@@ -47415,7 +47415,7 @@ function renderMermaid() {
 			suppressErrorRendering: !0,
 			...t
 		}, r = e.querySelectorAll("pre>code.language-mermaid");
-		r.length !== 0 && import("./mermaid.core-CNYZJ1We.js").then((e) => {
+		r.length !== 0 && import("./mermaid.core-Nx0wYrwq.js").then((e) => {
 			let t = e.default;
 			t.initialize(n), r.forEach((e, n) => {
 				let r = e.parentElement;
