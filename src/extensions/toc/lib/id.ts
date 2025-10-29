@@ -68,7 +68,7 @@ function setNodeId(node: Nodes, id: string) {
  * @param {string} value
  * @returns {RegExp}
  */
-function toExpression(value: string): RegExp {
+export function toExpression(value: string): RegExp {
   return new RegExp('^(' + value + ')$', 'i')
 }
 
@@ -79,7 +79,7 @@ export interface HeadOptions {
    */
   chapterNumber?: boolean
   /**
-   * Whether apply defaults of heading id.(default: `false`)
+   * Whether apply defaults of heading id.(default: `true`)
    * @type {boolean}
    */
   defaults?: boolean
@@ -101,7 +101,7 @@ export interface HeadOptions {
 export function remarkHeadingId(options?: HeadOptions): (tree: Root) => void {
   const settings = {
     chapterNumber: true,
-    defaults: false,
+    defaults: true,
     toc: '[\\[【]Table[ -]Of[ -]Contents[\\]】]|[\\[【]目录[\\]】]|[\\[【]TOC[\\]】]|\\{\\{TOC\\}\\}',
     ...options
   }

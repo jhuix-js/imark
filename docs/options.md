@@ -10,7 +10,7 @@ IMark Options defined be defined as follows:
 
 ## `remark` (RemarkSetting)
 
-    type RemarkSetting = KatexDelimiters | GfmOptions | EmojiOptions
+    type RemarkSetting = HeadOptions | KatexDelimiters | GfmOptions | EmojiOptions
 
 ### EmojiOptions
 
@@ -62,6 +62,30 @@ The options of parse gfm content of markdown.
 * `colspanWithEmpty` (boolean, default: true)
 
   Whether to merge cell with the right empty cell which contains no spaces (||). It will be parsed as an empty token type ('tableColspanLeftMarker'). Default value is `true`.
+
+### HeadOptions
+
+The heading options.
+
+    interface HeadOptions {
+      chapterNumber?: boolean
+      defaults?: boolean
+      toc?: string
+    }
+
+* `chapterNumber` (boolean, default: true)
+
+  Whether show chapter number.(default: `true`).
+
+* `defaults` (boolean, default: true)
+
+  Whether apply defaults of heading id.(default: `true`)
+
+* `toc` (string)
+
+  The heading regex expression of table of contents. 
+
+  (default: `[\\[【]Table[ -]Of[ -]Contents[\\]】]|[\\[【]目录[\\]】]|[\\[【]TOC[\\]】]|\\{\\{TOC\\}\\}`)
 
 ### KatexDelimiters
 
@@ -175,22 +199,17 @@ The configuration for render html.
 The configuration for render table of content.
 
     interface TocOptions {
-      heading?: string
       title?: string
-      compatible?: boolean
+      compatible?: string
     }
-
-- `heading` (string)
-
-  The heading regex expression.
 
 - `title` (string)
 
   The title of table of content.
 
-- `compatible` (boolean)
+- `compatible` (string)
 
-  Whether compatible to parse regular expression from the main text (`p` element of html).
+  Compatible to heading regex expression from the main text (`p` element of html).
 
 ### `mermaid` (MermaidConfig)
 

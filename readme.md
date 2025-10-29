@@ -98,7 +98,7 @@ See [iMark's Options](https://github.com/jhuix-js/imark/blob/main/docs/options.m
 
 #### `remark` (RemarkSetting)
 
-    type RemarkSetting = KatexDelimiters | GfmOptions | EmojiOptions
+    type RemarkSetting = HeadOptions | KatexDelimiters | GfmOptions | EmojiOptions
 
 #### `rehype` (RehypeOptions)
 
