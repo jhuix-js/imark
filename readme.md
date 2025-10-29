@@ -20,21 +20,25 @@ Extensions features as follows, preview as the document -- [iMark's Features](ht
 
 * [Container](https://jhuix-js.github.io/imark/index.html#4-container)
 
-* [LaTex and Ascii math](https://jhuix-js.github.io/imark/index.html#5-latex-math-and-asciimath)
+* [CSS](https://jhuix-js.github.io/imark/index.html#5-css)
 
-* [Plantuml](https://jhuix-js.github.io/imark/index.html#7-plantuml)
+* [Media](https://jhuix-js.github.io/imark/index.html#6-media)
 
-* [Mermaid diagrams](https://jhuix-js.github.io/imark/index.html#6-mermaid)
+* [LaTex and Ascii math](https://jhuix-js.github.io/imark/index.html#7-latex-math-and-asciimath)
 
-* [Railroad diagrams](https://jhuix-js.github.io/imark/index.html#8-railroad)
+* [Plantuml](https://jhuix-js.github.io/imark/index.html#8-plantuml)
 
-* [WaveDrom diagrams](https://jhuix-js.github.io/imark/index.html#9-wavedrom)
+* [Mermaid diagrams](https://jhuix-js.github.io/imark/index.html#9-mermaid)
 
-* [ECharts diagrams](https://jhuix-js.github.io/imark/index.html#10-echarts)
+* [Railroad diagrams](https://jhuix-js.github.io/imark/index.html#10-railroad)
 
-* [Vega diagrams](https://jhuix-js.github.io/imark/index.html#11-vega)
+* [WaveDrom diagrams](https://jhuix-js.github.io/imark/index.html#11-wavedrom)
 
-* [ABC](https://jhuix-js.github.io/imark/index.html#12-abc)
+* [ECharts diagrams](https://jhuix-js.github.io/imark/index.html#12-echarts)
+
+* [Vega diagrams](https://jhuix-js.github.io/imark/index.html#13-vega)
+
+* [ABC](https://jhuix-js.github.io/imark/index.html#14-abc)
 
 ## Usage
 

@@ -137,8 +137,8 @@ function appendTocElement(
 }
 
 function renderTocElements(parent: HTMLElement, settings: TocOptions): HTMLElement[] {
-  const test = settings.heading ? toExpression(settings.heading) : undefined
-  if (!test) return []
+  // const test = settings.heading ? toExpression(settings.heading) : undefined
+  // if (!test) return []
 
   let result: HTMLElement[] = []
   let headingLevel = 0
@@ -153,7 +153,7 @@ function renderTocElements(parent: HTMLElement, settings: TocOptions): HTMLEleme
   result.push(svgs)
   const elements = parent.querySelectorAll(headings.join(',') + (settings.compatible ? ',p' : ''))
   elements.forEach((element) => {
-    if (element.textContent && test.test(element.textContent)) {
+    if (element.textContent && element.id && element.id === 'imark-toc-head' /* test.test(element.textContent) */) {
       // Match the element text is [toc].
       // And replace this element with out list that classname is 'imark-toc'.
       // New table of contents container.
@@ -465,15 +465,15 @@ export function renderToc(): Render {
    */
   return function (tree: HTMLElement, option?: TocOptions) {
     const settings = {
-      heading: '[\\[【]Table[ -]Of[ -]Contents[\\]】]|[\\[【]目录[\\]】]|[\\[【]TOC[\\]】]|\\{\\{TOC\\}\\}',
+      // heading: '[\\[【]Table[ -]Of[ -]Contents[\\]】]|[\\[【]目录[\\]】]|[\\[【]TOC[\\]】]|\\{\\{TOC\\}\\}',
       ...option
     }
-    if (settings.heading.length > 0) {
-      const tocs = renderTocElements(tree, settings)
-      tocs.forEach((toc: HTMLElement) => {
-        tree.parentElement?.appendChild(toc)
-      })
-      loadTocEvent()
-    }
+    //if (settings.heading.length > 0) {
+    const tocs = renderTocElements(tree, settings)
+    tocs.forEach((toc: HTMLElement) => {
+      tree.parentElement?.appendChild(toc)
+    })
+    loadTocEvent()
+    // }
   } as Render
 }

@@ -72,8 +72,9 @@ export function remarkDirective() {
         case 'leafDirective':
           {
             const name = node.name ? node.name.toLowerCase() : ''
+            const attributes = node.attributes || {}
+            const data = node.data || (node.data = {})
             if (name === 'media' || name === '媒体') {
-              const data = node.data || (node.data = {})
               data.hName = 'div'
               if (node.children.length > 0) {
                 const title = {
@@ -89,7 +90,6 @@ export function remarkDirective() {
                 // @ts-ignore
                 node.children.splice(0, 1, title)
               }
-              const attributes = node.attributes || {}
               const id = attributes.id
               const url = attributes.url || ''
               const width = attributes.width || 200
@@ -121,24 +121,41 @@ export function remarkDirective() {
               }
               // @ts-ignore
               node.children.push(paragraph)
+              break
+            }
+
+            if (name === 'css') {
+              if (attributes.rel) {
+                data.hName = 'link'
+              } else {
+                data.hName = 'style'
+                if (!attributes.type || !attributes.type.length) {
+                  attributes.type = 'text/css'
+                }
+              }
+              data.hProperties = h(data.hName, attributes).properties
             }
           }
           break
         case 'textDirective':
           {
             const data = node.data || (node.data = {})
+            const attributes = node.attributes || {}
             const name = node.name ? node.name.toLowerCase() : ''
             let tagName = 'span'
             if (name === 'css') {
-              if (node.children.length > 0) {
-                tagName = 'style'
-              } else {
+              if (attributes.rel) {
                 tagName = 'link'
+              } else {
+                tagName = 'style'
+                if (!attributes.type || !attributes.type.length) {
+                  attributes.type = 'text/css'
+                }
               }
             }
 
             data.hName = tagName
-            data.hProperties = h(tagName, node.attributes || {}).properties
+            data.hProperties = h(tagName, attributes).properties
           }
           break
       }

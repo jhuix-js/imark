@@ -1,14 +1,14 @@
 ![iMark](https://raw.githubusercontent.com/jhuix-js/imark/refs/heads/main/logo.png)
 
-[iMark](https://github.com/jhuix-js/imark) is a javascript's lib that make markdown to html with some extensions features(include diagrams of abcjs, echarts, mermaid, plantuml, railroad, wavedrom, katex, gird tables, gfm extended tables etc.).
-
 # [toc]
 
-# [Features](https://jhuix.github.io/imark)
+<h1 align="center"><a herf="https://jhuix-js.github.io/imark"> iMark's Features</a></h1>
 
-Common Markdown Syntax, refer to the document -- [Markdown Syntax](https://github.com/showdownjs/showdown/wiki/Showdown's-Markdown-syntax).
+**[iMark](https://github.com/jhuix-js/imark) is a javascript's lib that make markdown to html with some extensions features.**
 
-Extensions features as follows:
+**It supporta common markdown syntax, refer to the document -- [Markdown Syntax](https://github.com/showdownjs/showdown/wiki/Showdown's-Markdown-syntax).**
+
+**It also supports the extensions features as follows:**
 
 * [Table](#1-table)
 
@@ -18,21 +18,25 @@ Extensions features as follows:
 
 * [Container](#4-container)
 
-* [LaTex and Ascii math](#5-latex-math-and-asciimath)
+* [CSS](#5-css)
 
-* [Plantuml](#7-plantuml)
+* [Media](#6-media)
 
-* [Mermaid diagrams](#6-mermaid)
+* [LaTex and Ascii math](#7-latex-math-and-asciimath)
 
-* [Railroad diagrams](#8-railroad)
+* [Plantuml](#8-plantuml)
 
-* [WaveDrom diagrams](#9-wavedrom)
+* [Mermaid diagrams](#9-mermaid)
 
-* [ECharts diagrams](#10-echarts)
+* [Railroad diagrams](#10-railroad)
 
-* [Vega diagrams](#11-vega)
+* [WaveDrom diagrams](#11-wavedrom)
 
-* [ABC](#12-abc)
+* [ECharts diagrams](#12-echarts)
+
+* [Vega diagrams](#13-vega)
+
+* [ABC](#14-abc)
 
 :::note[Expanded syntax language attribute]{.info}
 
@@ -46,13 +50,13 @@ Extensions features as follows:
   
   **otherwise the codeblock is tried to parse as corresponding diagrams.**
 
-* For example, see following [Mermaid](#mermaid) example.
+* For example, see following [Mermaid](#9-mermaid) example.
 
 :::    
 
-## 1. Table
+## Table
 
-The following features are implemented based on the imark's table:
+The following table features are implemented based on the imark's table:
 
   * Gfm table
   * Cell spans over columns (optional)
@@ -62,7 +66,7 @@ The following features are implemented based on the imark's table:
 
 ### Gfm table
 
-cell style syntax has "-{2,}",":-{2,}",":-{2,}:","-{2,}:", means default (align left), align left, align center, and align right style
+Cell style syntax has "-{2,}",":-{2,}",":-{2,}:","-{2,}:", means default (align left), align left, align center, and align right style
 
 ```
 | Return Code | Style | Value | DESC      |
@@ -197,7 +201,7 @@ Table header can be eliminated. (optional: tableHeadless)
 | footer |    cells |      |
 +--------+----------+------+
 
-## 2. Table of Contents
+## Table of Contents
 
 It's implemented sub-TOC.
 
@@ -219,7 +223,7 @@ It's implemented sub-TOC.
 
 ##### sub examples2
 
-## 3. Footnotes
+## Footnotes
 
 
 ### Markdown Syntax
@@ -249,7 +253,7 @@ Text here and here and here.
 [Learn more about markdown and footnotes in markdown](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#footnotes)
 
 
-## 4. Container
+## Container
 
 It's implemented in directive, allows you to create block level containers.
 
@@ -325,7 +329,73 @@ Which will be rendered as:
 *A simple success alert text!*
 :::
 
-## 5. LaTeX math and AsciiMath
+## CSS
+
+Support css directive.
+
+### Markdown Syntax
+
+
+```
+:[:]css{rel="stylesheet" href="(css url)"}
+
+```
+
+It be converted to html as follows:
+
+```
+<link rel="stylesheet" href="(css url)">
+```
+
+
+OR
+
+
+```
+:[:]css[css content][{type="text/css"}]
+
+```
+
+It be converted to html as follows:
+
+```
+<style type="text/css">css content</style>
+```
+
+### CSS Example
+
+
+```
+::css{rel="stylesheet" href="https://jhuix.github.io/showdowns/dist/showdowns.min.css"}
+
+```
+
+It be converted to html as follows:
+
+```
+<link rel="stylesheet" href="https://jhuix.github.io/showdowns/dist/showdowns.min.css">
+```
+
+## Media
+
+Support media directive.
+
+### Markdown Syntax
+
+```
+::media[title]{[iframe attributes]}
+
+```
+
+### Media Example
+
+```
+::media[Video of a cat in a box]{#01ab2cd3efg url='https://www.youtube.com/embed/u2ah9tWTkmk?list=RDCLAK5uy_lBNUteBRencHzKelu5iDHwLF6mYqjL-JU' width=1153 height=577 allowFullScreen=true}
+```
+
+::media[Video of a cat in a box]{#01ab2cd3efg url='https://www.youtube.com/embed/u2ah9tWTkmk?list=RDCLAK5uy_lBNUteBRencHzKelu5iDHwLF6mYqjL-JU' width=1153 height=577 allowFullScreen=true}
+
+## LaTeX math and AsciiMath
 
 It's supported by KaTeX , that render [LaTeX](https://www.latex-project.org/) math and [AsciiMath](http://asciimath.org/) using [KaTeX](https://github.com/Khan/KaTeX), You can check [KaTeX supported functions/symbols](https://khan.github.io/KaTeX/function-support.html).
 
@@ -410,7 +480,47 @@ where:
 
 * @@delta Q@@ is the internal heat energy per unit volume \\$(J \* m^-3)\\$
 
-## 6. Mermaid
+## Plantuml
+
+It's implemented in plantuml. render diagrams of uml using [plantuml](http://plantuml.com). To know more about PlantUML, please visit [plantuml website](http://plantuml.com/).
+
+### Markdown Syntax
+
+````
+```plantuml {"align": "left | center | right", "codeblock": true | false}
+@startuml
+<code content>
+@enduml
+```
+````
+
+### Plantuml example
+
+```plantuml {"align":"center"}
+      @startuml
+      participant User
+
+      User -> A: DoWork
+      activate A
+
+      A -> B: << createRequest >>
+      activate B
+
+      B -> C: DoWork
+      activate C
+      C --> B: WorkDone
+      destroy C
+
+      B --> A: RequestCreated
+      deactivate B
+
+      A -> User: Done
+      deactivate A
+
+      @enduml
+```
+
+## Mermaid
 
 It's implemented in mermaid, render diagrams of Flowchart or Sequence or Gantt using [mermaid](https://github.com/knsv/mermaid), check [mermaid doc](https://mermaidjs.github.io) for more information.
 
@@ -494,47 +604,7 @@ sequenceDiagram
        Future task2               :         des4, after des3, 5d
 ```
 
-## 7. Plantuml
-
-It's implemented in plantuml. render diagrams of uml using [plantuml](http://plantuml.com). To know more about PlantUML, please visit [plantuml website](http://plantuml.com/).
-
-### Markdown Syntax
-
-````
-```plantuml {"align": "left | center | right", "codeblock": true | false}
-@startuml
-<code content>
-@enduml
-```
-````
-
-### Plantuml example
-
-```plantuml {"align":"center"}
-      @startuml
-      participant User
-
-      User -> A: DoWork
-      activate A
-
-      A -> B: << createRequest >>
-      activate B
-
-      B -> C: DoWork
-      activate C
-      C --> B: WorkDone
-      destroy C
-
-      B --> A: RequestCreated
-      deactivate B
-
-      A -> User: Done
-      deactivate A
-
-      @enduml
-```
-
-## 8. Railroad
+## Railroad
 
 It's implemented in railroad, render diagrams of railroad using [railroad-diagrams](https://github.com/tabatkins/railroad-diagrams).
 
@@ -560,7 +630,7 @@ Diagram(
           NonTerminal('escape'))))
 ```
 
-## 9. WaveDrom
+## WaveDrom
 
 It's implemented in wavedrom, render diagrams of wavedrom using [wavedrom](https://github.com/wavedrom/wavedrom), check [wavedrom website](https://wavedrom.com) for more information.
 
@@ -599,7 +669,7 @@ It's implemented in wavedrom, render diagrams of wavedrom using [wavedrom](https
 ]}
 ```
 
-## 10. Echarts
+## Echarts
 
 ### Markdown Syntax
 
@@ -678,7 +748,7 @@ const option = {
 }
 ```
 
-## 11. Vega
+## Vega
 
 It's implemented in vega and vega-embed, render diagrams of [Vega](https://github.com/vega/vega) and [Vega-Lite](https://github.com/vega/vega-lite) using [vega-embed](https://github.com/vega/vega-embed), check [vega website](https://vega.github.io/vega/) and [vega-lite website](https://vega.github.io/vega-lite) for more information.
 
@@ -1211,7 +1281,7 @@ OR
 }
 ```
 
-## 12.ABC
+## ABC
 
 ### Markdown Syntax
 
