@@ -9,7 +9,6 @@ import rehypeFormat from 'rehype-format'
 import rehypeStringify from 'rehype-stringify'
 import { defaultSchema } from 'hast-util-sanitize'
 import { unified } from 'unified'
-import imarkHeadingId from './extensions/heading-id'
 import imarkDirective from './extensions/directive'
 import imarkGirdTables from './extensions/girdtables'
 import imarkEmoji from './extensions/emoji'
@@ -82,14 +81,13 @@ class Converter {
     this.schema = defSchema
     this.schema.clobberPrefix = 'imark-'
     this.plugins = {
-      head: imarkHeadingId(),
       meta: imarkDataMeta(),
+      toc: imarkToc(),
       girdtables: imarkGirdTables(),
       directive: imarkDirective(),
       emoji: imarkEmoji(),
       gfm: imarkGfm(),
       katex: imarkKatex(),
-      toc: imarkToc(),
       abc: imarkAbc(),
       uml: imarkUml(),
       echarts: imarkEcharts(),
@@ -100,9 +98,9 @@ class Converter {
     }
   }
 
-  setting(name: string, rs: RemarkSetting) {
+  setting(name: string, remarkSetting: RemarkSetting) {
     if (name in this.plugins && this.plugins[name].setting) {
-      this.plugins[name].setting(rs)
+      this.plugins[name].setting(remarkSetting)
     }
   }
 

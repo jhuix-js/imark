@@ -3,7 +3,7 @@ import type { Handler } from 'mdast-util-to-hast'
 import type { EmojiOptions } from './extensions/emoji'
 import type { KatexDelimiters, KatexOptions } from './extensions/katex'
 import type { GfmOptions } from './extensions/gfm'
-import type { TocOptions } from './extensions/toc'
+import type { HeadOptions, TocOptions } from './extensions/toc'
 import type { MermaidConfig } from './extensions/mermaid'
 import type { EChartsInitOpts } from './extensions/echarts'
 import type { AbcVisualParams } from './extensions/abc'
@@ -72,7 +72,7 @@ export type RenderOptions = {
 
 export type RenderOptionsKey = keyof RenderOptions
 
-export type RemarkSetting = KatexDelimiters | GfmOptions | EmojiOptions
+export type RemarkSetting = HeadOptions | KatexDelimiters | GfmOptions | EmojiOptions
 
 export type Render = ((tree: HTMLElement, option?: RenderOption) => void) | (() => void)
 
@@ -95,7 +95,11 @@ export interface IMarkPlugin {
   /**
    * Setting for parse markdown
    */
-  setting?: ((s: GfmOptions) => void) | ((s: KatexDelimiters) => void) | ((s: EmojiOptions) => void)
+  setting?:
+    | ((s: HeadOptions) => void)
+    | ((s: GfmOptions) => void)
+    | ((s: KatexDelimiters) => void)
+    | ((s: EmojiOptions) => void)
   /**
    * Customize markdown parse by remark plugins:
    *
