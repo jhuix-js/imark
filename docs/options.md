@@ -1,6 +1,6 @@
 # iMark's Options
 
-IMark Options defined be defined as follows:
+iMark's Options be defined as follows:
 
     interface IMarkOptions {
       remark?: RemarkSetting

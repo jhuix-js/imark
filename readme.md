@@ -2,15 +2,77 @@
 
 <h1 align="center">iMark</h1>
 
-[iMark](https://github.com/jhuix-js/imark) is a javascript's lib that make markdown to html with some extensions features(include diagrams of abcjs, echarts, mermaid, plantuml, railroad, wavedrom, katex, gird tables, gfm extended tables etc.).
+[iMark](https://github.com/jhuix-js/imark) is a javascript's lib that make [markdown][docs-markdown] to html with some extensions features(include extensions of abcjs, echarts, mermaid, plantuml, railroad, wavedrom, katex, gird tables, gfm extended tables etc.).
 
 > If you think the imark library can help you or also hope to encourage the author, click on the top right corner to give me a [Star](https://github.com/jhuix-js/imark)⭐️.
 
-## Support Features
+## Feature highlights
 
-Common Markdown Syntax, refer to the document -- [Markdown Syntax](https://github.com/showdownjs/showdown/wiki/Showdown's-Markdown-syntax).
+[compliant](#syntax) — 100% to [CommonMark][docs-commonmark], 100% to [GFM][docs-gfm] or MDX with a plugin
 
-Extensions features as follows, preview as the document -- [iMark's Features](https://jhuix-js.github.io/imark/index.html):
+[MDAST](#markdown-syntax-tree) — markdown ASTs that inspecting and changing content made easy
+
+[HAST](#html-syntax-tree) — HTML ASTs that inspecting and changing content made easy
+
+### Syntax
+
+Markdown is parsed and serialized according to [CommonMark][docs-commonmark].
+Other plugins can add support for syntax extensions.
+
+We use [`micromark`][github-micromark] for our parsing.
+See its documentation for more information on markdown,
+CommonMark, and extensions.
+
+### MarkDown Syntax tree
+
+The syntax tree used in iMark is [mdast][github-mdast] by [remark-parse][github-remark-parse].
+It represents markdown constructs as JSON objects.
+
+This markdown:
+
+```markdown
+## Hello *Pluto*!
+```
+
+…yields the following tree (positional info remove for brevity):
+
+```js
+{
+  type: 'heading',
+  depth: 2,
+  children: [
+    {type: 'text', value: 'Hello '},
+    {type: 'emphasis', children: [{type: 'text', value: 'Pluto'}]}
+    {type: 'text', value: '!'}
+  ]
+}
+```
+
+### HTML Syntax tree
+
+The syntax tree used in iMark is [hast][github-hast] by [remark-rehype][github-remark-rehype].
+
+## Intro
+
+iMark is an ecosystem of plugins that work with [markdown][docs-markdown] as structured data, specifically ASTs (abstract syntax trees). ASTs make it easy for programs to deal with markdown. We call those programs plugins. Plugins inspect and change trees. You can use the many existing plugins or you can make your own.
+
+iMark integrated some packages that contains the following:
+
+* [unified][github-unified]
+  — it is the core project that transforms content with ASTs.
+* [`remark-parse`][github-remark-parse]
+  — plugin to take markdown as input and turn it into the markdown ASTs (**[mdast][github-mdast]**)
+* [`remark-rehype`][github-remark-rehype]
+  — plugin to turn markdown into the HTML ASTs (**[hast][github-hast]**)
+* [`rehype-format`][github-rehype-format]
+  — plugin to format a HTML ASTs (**[hast][github-hast]**)
+* [`rehype-stringify`][github-remark-stringify]
+  — plugin to take a HTML ASTs (**[hast][github-hast]**) and turn it into HTML as output
+
+It supports [CommonMark][docs-commonmark] by default. Non-standard markdown extensions can be enabled with plugins. 
+For example, it support for [GFM][docs-gfm] (autolink literals, footnotes, strikethrough, tables, tasklists) in [`@jhuix/remark-gfm`][github-remark-gfm].
+
+Supports extensions features as follows, preview as the document -- [iMark's Features](https://jhuix-js.github.io/imark/index.html):
 
 * [Table](https://jhuix-js.github.io/imark/index.html#1-table)
 
@@ -86,7 +148,7 @@ Put the following line into your HTML page \<body>:
 
 ### Options
 
-IMark Options defined be defined as follows:
+iMark's Options be defined as follows:
 
     interface IMarkOptions {
         remark?: RemarkSetting
@@ -156,3 +218,30 @@ See [iMark's API](https://github.com/jhuix-js/imark/blob/main/docs/api.md).
 
 [MIT](LICENSE) © 2025 [Jhuix](mailto:jhuix0117@gmail.com) (Hui Jin)
 
+<!-- Definitions -->
+
+[docs-commonmark]: https://commonmark.org/
+
+[docs-gfm]: https://github.github.com/gfm/
+
+[docs-markdown]: https://daringfireball.net/projects/markdown
+
+[github-hast]: https://github.com/syntax-tree/hast
+
+[github-mdast]: https://github.com/syntax-tree/mdast
+
+[github-micromark]: https://github.com/micromark/micromark
+
+[github-rehype]: https://github.com/rehypejs/rehype
+
+[github-remark-gfm]: https://github.com/jhuix-js/remark-gfm
+
+[github-remark-parse]: https://github.com/remarkjs/remark/tree/main/packages/remark-parse
+
+[github-remark-rehype]: https://github.com/remarkjs/remark-rehype
+
+[github-remark-stringify]: https://github.com/rehypejs/rehype
+
+[github-rehype-format]: https://github.com/rehypejs/rehype-format
+
+[github-unified]: https://github.com/unifiedjs/unified

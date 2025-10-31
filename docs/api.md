@@ -114,4 +114,4 @@ Set the necessary settings for parsing markdown. Return imark instance.
 - `imarkOptions` (IMarkOptions)
 
   The configuration required where parse markdown or remark rehype or render html.
-  See [IMarkOptions](https://github.com/jhuix-js/imark/blob/main/docs/options.md)
+  See [iMark's Options](https://github.com/jhuix-js/imark/blob/main/docs/options.md)
