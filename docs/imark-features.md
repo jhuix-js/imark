@@ -6,7 +6,7 @@
 
 **[iMark](https://github.com/jhuix-js/imark) is a javascript's lib that make markdown to html with some extensions features.**
 
-**It supporta common markdown syntax, refer to the document -- [Markdown Syntax](https://github.com/showdownjs/showdown/wiki/Showdown's-Markdown-syntax).**
+**It support common markdown syntax, refer to the document -- [Common Markdown Syntax](https://spec.commonmark.org/current/).**
 
 **It also supports the extensions features as follows:**
 
