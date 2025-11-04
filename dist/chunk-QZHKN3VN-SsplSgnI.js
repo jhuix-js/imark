@@ -3,7 +3,7 @@ var ImperativeState = class {
 	constructor(e) {
 		this.init = e, this.records = this.init();
 	}
-	static #_ = __name(this, "ImperativeState");
+	static #e = __name(this, "ImperativeState");
 	reset() {
 		this.records = this.init();
 	}

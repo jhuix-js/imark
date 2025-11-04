@@ -787,14 +787,14 @@ var sankey_default = parser, links = [], nodes = [], nodesMap = /* @__PURE__ */ 
 	constructor(t, l, u = 0) {
 		this.source = t, this.target = l, this.value = u;
 	}
-	static #_ = __name(this, "SankeyLink");
+	static #e = __name(this, "SankeyLink");
 }, addLink = /* @__PURE__ */ __name((t, l, u) => {
 	links.push(new SankeyLink(t, l, u));
 }, "addLink"), SankeyNode = class {
 	constructor(t) {
 		this.ID = t;
 	}
-	static #_ = __name(this, "SankeyNode");
+	static #e = __name(this, "SankeyNode");
 }, sankeyDB_default = {
 	nodesMap,
 	getConfig: /* @__PURE__ */ __name(() => getConfig2().sankey, "getConfig"),
@@ -822,8 +822,8 @@ var sankey_default = parser, links = [], nodes = [], nodesMap = /* @__PURE__ */ 
 	setDiagramTitle,
 	clear: clear2
 }, Uid = class l {
-	static #_ = __name(this, "Uid");
-	static #_2 = this.count = 0;
+	static #e = __name(this, "Uid");
+	static #t = this.count = 0;
 	static next(t) {
 		return new l(t + ++l.count);
 	}

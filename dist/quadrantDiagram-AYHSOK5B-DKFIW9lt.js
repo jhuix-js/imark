@@ -1468,7 +1468,7 @@ var quadrant_default = parser, defaultThemeVariables = getThemeVariables3(), Qua
 	constructor() {
 		this.classes = /* @__PURE__ */ new Map(), this.config = this.getDefaultConfig(), this.themeConfig = this.getDefaultThemeConfig(), this.data = this.getDefaultData();
 	}
-	static #_ = __name(this, "QuadrantBuilder");
+	static #e = __name(this, "QuadrantBuilder");
 	getDefaultData() {
 		return {
 			titleText: "",
@@ -1793,7 +1793,7 @@ var quadrant_default = parser, defaultThemeVariables = getThemeVariables3(), Qua
 		};
 	}
 }, InvalidStyleError = class extends Error {
-	static #_ = __name(this, "InvalidStyleError");
+	static #e = __name(this, "InvalidStyleError");
 	constructor(e, t, n) {
 		super(`value for ${e} ${t} is invalid, please use a valid ${n}`), this.name = "InvalidStyleError";
 	}

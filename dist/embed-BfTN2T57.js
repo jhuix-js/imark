@@ -27234,15 +27234,15 @@ function isDataSourceNode(t) {
 	return t instanceof SourceNode || t instanceof GraticuleNode || t instanceof SequenceNode;
 }
 var Optimizer = class {
-	#modified;
+	#e;
 	constructor() {
-		this.#modified = !1;
+		this.#e = !1;
 	}
 	setModified() {
-		this.#modified = !0;
+		this.#e = !0;
 	}
 	get modifiedFlag() {
-		return this.#modified;
+		return this.#e;
 	}
 }, BottomUpOptimizer = class extends Optimizer {
 	getNodeDepths(t, n, r) {
