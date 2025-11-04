@@ -19,9 +19,9 @@
 Markdown is parsed and serialized according to [CommonMark][docs-commonmark].
 Other plugins can add support for syntax extensions.
 
-We use [`micromark`][github-micromark] for our parsing.
-See its documentation for more information on markdown,
-CommonMark, and extensions.
+It's used by [`micromark`][github-micromark] for it's parsing.
+See its documentation for more information on [markdown][docs-markdown],
+[CommonMark][docs-commonmark], and [extensions](https://jhuix-js.github.io/imark/index.html).
 
 ### MarkDown Syntax tree
 
@@ -58,7 +58,7 @@ iMark is an ecosystem of plugins that work with [markdown][docs-markdown] as str
 
 iMark integrated some packages that contains the following:
 
-* [unified][github-unified]
+* [`unified`][github-unified]
   — it is the core project that transforms content with ASTs.
 * [`remark-parse`][github-remark-parse]
   — plugin to take markdown as input and turn it into the markdown ASTs (**[mdast][github-mdast]**)
@@ -71,6 +71,7 @@ iMark integrated some packages that contains the following:
 
 It supports [CommonMark][docs-commonmark] by default. Non-standard markdown extensions can be enabled with plugins. 
 For example, it support for [GFM][docs-gfm] (autolink literals, footnotes, strikethrough, tables, tasklists) in [`@jhuix/remark-gfm`][github-remark-gfm].
+It also support [Kroki](https://kroki.io) diagrams server, kroki provides a unified API with support for BlockDiag (BlockDiag, SeqDiag, ActDiag, NwDiag, PacketDiag, RackDiag), BPMN, Bytefield, C4 (with PlantUML), D2, DBML, Ditaa, Erd, Excalidraw, GraphViz, Mermaid, Nomnoml, Pikchr, PlantUML, Structurizr, SvgBob, Symbolator, TikZ, UMLet, Vega, Vega-Lite, WaveDrom, WireViz..
 
 Supports extensions features as follows, preview as the document -- [iMark's Features](https://jhuix-js.github.io/imark/index.html):
 
@@ -101,6 +102,7 @@ Supports extensions features as follows, preview as the document -- [iMark's Fea
 * [Vega diagrams](https://jhuix-js.github.io/imark/index.html#13-vega)
 
 * [ABC](https://jhuix-js.github.io/imark/index.html#14-abc)
+
 
 ## Usage
 
