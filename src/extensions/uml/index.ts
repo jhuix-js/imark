@@ -1,10 +1,10 @@
-import type { IMarkPlugin, Render } from '../../types'
+import type { CacheOption, IMarkPlugin, Render } from '../../types'
 import { renderUml } from './lib/index'
 
 /**
  * The options for render plantuml.
  */
-export interface UmlOptions {
+export type UmlOptions = {
   /**
    * Plantuml website.
    * @type {string}
@@ -18,13 +18,13 @@ export interface UmlOptions {
   /**
    * Render for svg
    * @param {string} id
-   * @param {string} classname 
-   * @param {string} code 
-   * @param {Number} index 
+   * @param {string} classname
+   * @param {string} code
+   * @param {Number} index
    * @returns {Promise<string>}
    */
   svgRender?: (id: string, classname: string, code: string, index: Number) => Promise<string>
-}
+} & CacheOption
 
 export default function imarkUml(): IMarkPlugin {
   return {

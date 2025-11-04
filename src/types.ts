@@ -10,6 +10,14 @@ import type { AbcVisualParams } from './extensions/abc'
 import type { UmlOptions } from './extensions/uml'
 import type { WaveDromOptions } from './extensions/wavedrom'
 import type { VegaEmbedOptions } from './extensions/vega'
+import type { KrokiOptions } from './extensions/kroki'
+
+/**
+ * Cache Option
+ */
+export type CacheOption = {
+  graphsCache?: { [key: string]: string }
+}
 
 /**
  * Render options type defined.
@@ -23,6 +31,7 @@ export type RenderOption =
   | UmlOptions
   | WaveDromOptions
   | VegaEmbedOptions
+  | KrokiOptions
 
 /**
  * Render options
@@ -32,42 +41,47 @@ export type RenderOptions = {
    * The options of render katex.
    * @type {KatexOptions}
    */
-  katex: KatexOptions
+  katex?: KatexOptions
   /**
    * The options of render toc.
    * @type {TocOptions}
    */
-  toc: TocOptions
+  toc?: TocOptions
   /**
    * The options of render mermaid.
    * @type {MermaidConfig}
    */
-  mermaid: MermaidConfig
+  mermaid?: MermaidConfig
   /**
    * The options of render echart.
    * @type {EChartsInitOpts}
    */
-  echarts: EChartsInitOpts
+  echarts?: EChartsInitOpts
   /**
    * The options of render abc.
    * @type {AbcVisualParams}
    */
-  abc: AbcVisualParams
+  abc?: AbcVisualParams
   /**
    * The options of render planuml.
    * @type {UmlOptions}
    */
-  uml: UmlOptions
+  uml?: UmlOptions
   /**
    * The options of render wavedrom.
    * @type {WaveDromOptions}
    */
-  wavedrom: WaveDromOptions
+  wavedrom?: WaveDromOptions
   /**
    * The options of render vega.
    * @type {VegaEmbedOptions}
    */
-  vega: VegaEmbedOptions
+  vega?: VegaEmbedOptions
+  /**
+   * The options of render kroki.
+   * @type {KrokiOptions}
+   */
+  kroki?: KrokiOptions
 }
 
 export type RenderOptionsKey = keyof RenderOptions

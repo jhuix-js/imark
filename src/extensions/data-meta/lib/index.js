@@ -49,7 +49,7 @@ export function rehypeDataMeta() {
    *   Nothing.
    */
   return function (tree) {
-    visitParents(tree, 'element', function (node, parents) {
+    visitParents(tree, 'element', function (node) {
       if (node.data && node.data.meta) {
         console.log('data meta:', node.data.meta)
         node.properties['data-meta'] = node.data.meta

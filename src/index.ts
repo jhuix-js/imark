@@ -58,12 +58,20 @@ class IMark {
   converter: Converter
 
   /**
+   * Graphs cache
+   *
+   * @type {{ [key: string]: string }}
+   */
+  graphsCache: { [key: string]: string }
+
+  /**
    * Creates an instance of IMark.
    *
    * @constructor
    */
   constructor() {
     this.converter = new Converter()
+    this.graphsCache = {}
   }
 
   /**
@@ -135,6 +143,7 @@ class IMark {
     if (!root) {
       root = document.body
     }
+    const graphsCache = this.graphsCache
     this.parse(md, imarkOptions?.remark, imarkOptions?.rehype).then(({ html, renders }) => {
       loadStyle('imarks-css', gCss)
       const parent = document.createElement('div')
@@ -143,11 +152,47 @@ class IMark {
       parent.innerHTML = html
       if (!renders) return
 
+      const renderOptions: RenderOptions = {
+        katex: {
+          ...imarkOptions?.render?.katex
+        },
+        toc: {
+          ...imarkOptions?.render?.toc
+        },
+        mermaid: {
+          graphsCache: graphsCache,
+          ...imarkOptions?.render?.mermaid
+        },
+        echarts: {
+          graphsCache: graphsCache,
+          ...imarkOptions?.render?.echarts
+        },
+        abc: {
+          graphsCache: graphsCache,
+          ...imarkOptions?.render?.abc
+        },
+        uml: {
+          graphsCache: graphsCache,
+          ...imarkOptions?.render?.uml
+        },
+        wavedrom: {
+          WaveDromSkin: 'default',
+          graphsCache: graphsCache,
+          ...imarkOptions?.render?.wavedrom
+        },
+        vega: {
+          graphsCache: graphsCache,
+          ...imarkOptions?.render?.vega
+        },
+        kroki: {
+          graphsCache: graphsCache,
+          ...imarkOptions?.render?.kroki
+        }
+      }
       for (const [k, render] of Object.entries(renders)) {
         if (!render) continue
 
-        const renderOptions = imarkOptions?.render
-        const renderOption = renderOptions ? renderOptions[k as RenderOptionsKey] : undefined
+        const renderOption = renderOptions[k as RenderOptionsKey] ?? undefined
         ;(async (e) => {
           render(e, renderOption)
         })(parent)

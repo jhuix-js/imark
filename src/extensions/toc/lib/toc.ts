@@ -424,7 +424,7 @@ export function renderToc(): Render {
    *
    * @param {HTMLElement} tree
    *   Tree.
-   * @returns {Render}
+   * @returns
    *   Transform.
    */
   return function (tree: HTMLElement, option?: TocOptions) {

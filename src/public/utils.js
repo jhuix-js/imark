@@ -1,3 +1,5 @@
+import md5 from 'md5'
+
 /**
  * Load style
  *
@@ -23,7 +25,8 @@ export function loadStyle(id, css) {
  *  hasAudio?: boolean,
  *  imageFormat?: string,
  *  options?: object,
- *  type?: string
+ *  type?: string,
+ *  kroki?: boolean | string
  * }} META
  * @param {HTMLElement} el
  * @returns {META | undefined}
@@ -46,8 +49,9 @@ export function parseMeta(el) {
      *  height?: number | string,
      *  audio?: boolean,
      *  imageFormat?: string,
-     *  options?: object
-     *  type?: string
+     *  options?: object,
+     *  type?: string,
+     *  kroki?: boolean | string
      * }}
      */
     const cfg = JSON.parse(el.dataset.meta)
@@ -91,6 +95,9 @@ export function parseMeta(el) {
     }
     if (cfg.type) {
       meta.type = cfg.type
+    }
+    if (cfg.kroki) {
+      meta.kroki = cfg.kroki
     }
   } catch (error) {}
   return meta
@@ -174,3 +181,14 @@ export function deepMerge(target, ...sources) {
 
 //   return dst
 // }
+
+/**
+ * md5 hash
+ *
+ * @param {string} text
+ * @returns {string}
+ */
+export function checkSum(text) {
+  return md5(text).toString()
+}
+

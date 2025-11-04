@@ -79,6 +79,9 @@ export function renderUml() {
               }
               pre.replaceWith(container)
             })
+            .catch((error) => {
+              console.error('fetch plantuml error:', error.toString())
+            })
         }
       } else {
         const protocol = window && window.location.protocol

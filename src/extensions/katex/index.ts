@@ -1,4 +1,4 @@
-import type { IMarkPlugin, Render } from '../../types'
+import type { CacheOption, IMarkPlugin, Render } from '../../types'
 import { rehypeKatex, renderKatex } from './lib/index'
 import { Processor } from 'unified'
 import { deepMerge } from '../../public/utils'
@@ -63,7 +63,7 @@ export interface KatexDelimiters {
 }
 
 const katexSetting: KatexDelimiters = {}
-export type KatexOptions = import('katex').KatexOptions
+export type KatexOptions = import('katex').KatexOptions & CacheOption
 export default function imarkKatex(): IMarkPlugin {
   return {
     setting: (s: KatexDelimiters) => {

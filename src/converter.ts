@@ -23,6 +23,7 @@ import imarkMermaid from './extensions/mermaid'
 import imarkRailroad from './extensions/railroad'
 import imarkWaveDrom from './extensions/wavedrom'
 import imarkVega from './extensions/vega'
+import imarkKroki from './extensions/kroki'
 
 type rehypeOptons = import('remark-rehype').Options
 export interface RehypeOptions extends rehypeOptons {
@@ -94,7 +95,8 @@ class Converter {
       mermaid: imarkMermaid(),
       railroad: imarkRailroad(),
       wavedrom: imarkWaveDrom(),
-      vega: imarkVega()
+      vega: imarkVega(),
+      kroki: imarkKroki()
     }
   }
 
