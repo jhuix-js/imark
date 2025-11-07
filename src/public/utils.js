@@ -47,6 +47,7 @@ export function parseMeta(el) {
      *  align?: string,
      *  width?: number | string,
      *  height?: number | string,
+     *  style?: string,
      *  audio?: boolean,
      *  imageFormat?: string,
      *  options?: object,
@@ -83,6 +84,9 @@ export function parseMeta(el) {
       } else {
         meta.style = (!meta.style ? '' : meta.style) + `height:${cfg.height};`
       }
+    }
+    if (cfg.style) {
+      meta.style = meta.style ? meta.style + ' ' + cfg.style : cfg.style
     }
     if (cfg.audio) {
       meta.hasAudio = true
@@ -191,4 +195,3 @@ export function deepMerge(target, ...sources) {
 export function checkSum(text) {
   return md5(text).toString()
 }
-

@@ -67,17 +67,21 @@ export function renderWaveDrom() {
      * @param {object} waveDrom
      * @param {Number} index
      * @param {string} id
-     * @param {string} classname
+     * @param {string[]} classlist
+     * @param {string} style
      * @param {string} data
      * @param {HTMLElement} parent
      * @param {string} checksum
      * @param {object} waveSkin
      * @returns
      */
-    function nativeRender(waveDrom, index, id, classname, data, parent, checksum, waveSkin) {
+    function nativeRender(waveDrom, index, id, classlist, style, data, parent, checksum, waveSkin) {
       const selector = document.createElement('div')
       selector.id = id
-      selector.classList.add(classname)
+      selector.classList.add(...classlist)
+      if (style.length > 0) {
+        selector.style.cssText = style
+      }
       parent.replaceWith(selector)
       const obj = window.eval(`(${data})`)
       // @ts-ignore
@@ -109,14 +113,16 @@ export function renderWaveDrom() {
         }
       }
 
-      const classname = meta.diagramClass ?? ''
+      const classlist = ['wavedrom']
+      if (meta.diagramClass && meta.diagramClass.length > 0) {
+        classlist.push(meta.diagramClass)
+      }
       const id = `WaveDrom_Display_${Date.now()}-${i}`
+      const style = meta.style ? meta.style : ''
       const krokiDiagramType = getKrokiDiagramType(el.className, meta.kroki)
       if (krokiDiagramType.length > 0) {
         const krokiImageFormat = meta.imageFormat ? meta.imageFormat : 'svg'
-        const id = `mermaid-${Date.now()}-${i}`
-
-        getKrokiImage(krokiDiagramType, id, classname, krokiImageFormat, data, (html) => {
+        getKrokiImage(krokiDiagramType, id, classlist, style, krokiImageFormat, data, (html) => {
           if (typeof html === 'string') {
             if (graphsCache && checksum.length > 0) {
               graphsCache[checksum] = html
@@ -138,12 +144,12 @@ export function renderWaveDrom() {
         // @ts-ignore
         import('wavedrom').then((c) => {
           waveDrom = c.default
-          nativeRender(waveDrom, i, id, classname, data, pre, checksum, waveSkin)
+          nativeRender(waveDrom, i, id, classlist, style, data, pre, checksum, waveSkin)
         })
         return
       }
 
-      nativeRender(waveDrom, i, id, classname, data, pre, checksum, waveSkin)
+      nativeRender(waveDrom, i, id, classlist, style, data, pre, checksum, waveSkin)
     })
 
     // // @ts-ignore

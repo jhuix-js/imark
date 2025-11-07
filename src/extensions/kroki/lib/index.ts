@@ -281,12 +281,16 @@ export function renderKroki(): Render {
         }
       }
 
-      const classname = meta.diagramClass ?? ''
       const krokiDiagramType = getKrokiDiagramType(el.className, true)
       if (krokiDiagramType.length > 0) {
+        const classlist = [`${krokiDiagramType}`]
+        if (meta.diagramClass && meta.diagramClass.length > 0) {
+          classlist.push(meta.diagramClass)
+        }
+        const style = meta.style ? meta.style : ''
         const krokiImageFormat = meta.imageFormat ? meta.imageFormat : 'svg'
         const id = `${krokiDiagramType}-${Date.now()}-${i}`
-        getKrokiImage(krokiDiagramType, id, classname, krokiImageFormat, data, (html) => {
+        getKrokiImage(krokiDiagramType, id, classlist, style, krokiImageFormat, data, (html) => {
           if (typeof html === 'string') {
             if (graphsCache && checksum.length > 0) {
               graphsCache[checksum] = html

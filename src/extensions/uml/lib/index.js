@@ -1,5 +1,6 @@
 import { parseMeta } from '../../../public/utils'
 import { encodeUml } from './codec'
+import fetch from 'cross-fetch'
 
 /**
  * Render elements with a `language-plantuml`.
@@ -60,14 +61,13 @@ export function renderUml() {
             container.innerHTML = svgData
             pre.replaceWith(container)
           })
-        } else if (typeof window !== 'undefined' && window.fetch) {
+        } /*  if (typeof window !== 'undefined' && window.fetch) */ else {
           const protocol = window && window.location.protocol
           const website = (protocol === 'http:' || protocol === 'https:' ? '//' : 'https://') + config.umlWebSite
           const imageExtension = `.${imageFormat}`
           const uml = encodeUml(code)
           const src = `${website}/${imageFormat}/${uml}${imageExtension}`
-          window
-            .fetch(src)
+          fetch(src)
             .then((response) => {
               if (response.ok) {
                 return response.text()

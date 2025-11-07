@@ -47,19 +47,21 @@ export function renderMermaid() {
      * Native Render
      *
      * @param {import("mermaid").Mermaid} mermaid
-     * @param {Number} index
-     * @param {string} classname
+     * @param {string} id
+     * @param {string[]} classlist
+     * @param {string} style
      * @param {string} data
      * @param {HTMLElement} parent
      * @param {string} checksum
      * @returns
      */
-    function nativeRender(mermaid, index, classname, data, parent, checksum) {
-      const id = `mermaid-${Date.now()}-${index}`
+    function nativeRender(mermaid, id, classlist, style, data, parent, checksum) {
+      style = style.length > 0 ? ` style="${style}"` : ``
+      const classname = classlist.length > 0 ? ` class="${classlist.join(' ')}"` : ''
       mermaid
         .render(id, data)
         .then((m) => {
-          const outerHTML = `<div class="${classname}">${m.svg}</div>`
+          const outerHTML = `<div${classname}${style}>${m.svg}</div>`
           if (graphsCache && checksum.length > 0) {
             graphsCache[checksum] = outerHTML
           }
@@ -92,13 +94,16 @@ export function renderMermaid() {
         }
       }
 
-      const classname = meta.diagramClass ?? ''
+      const classlist = ['mermaid']
+      if (meta.diagramClass && meta.diagramClass.length > 0) {
+        classlist.push(meta.diagramClass)
+      }
+      const id = `mermaid-${Date.now()}-${i}`
+      const style = meta.style ? meta.style : ''
       const krokiDiagramType = getKrokiDiagramType(el.className, meta.kroki)
       if (krokiDiagramType.length > 0) {
         const krokiImageFormat = meta.imageFormat ? meta.imageFormat : 'svg'
-        const id = `mermaid-${Date.now()}-${i}`
-
-        getKrokiImage(krokiDiagramType, id, classname, krokiImageFormat, data, (html) => {
+        getKrokiImage(krokiDiagramType, id, classlist, style, krokiImageFormat, data, (html) => {
           if (typeof html === 'string') {
             if (graphsCache && checksum.length > 0) {
               graphsCache[checksum] = html
@@ -118,12 +123,12 @@ export function renderMermaid() {
         import('mermaid').then((c) => {
           c.default.initialize(config)
           mermaid = c.default
-          nativeRender(mermaid, i, classname, data, pre, checksum)
+          nativeRender(mermaid, id, classlist, style, data, pre, checksum)
         })
         return
       }
 
-      nativeRender(mermaid, i, classname, data, pre, checksum)
+      nativeRender(mermaid, id, classlist, style, data, pre, checksum)
     })
 
     // import('mermaid').then((c) => {

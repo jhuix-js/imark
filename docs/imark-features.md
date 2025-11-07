@@ -1408,7 +1408,7 @@ K: Em
 
 * PacketDiag
 
-```kroki-packetdiag {"width": 400, "align":"center"}
+```kroki-packetdiag {"width": 800, "align":"center"}
 packetdiag {
   colwidth = 32;
   node_height = 72;

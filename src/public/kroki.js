@@ -1,3 +1,5 @@
+import fetch from 'cross-fetch'
+
 /**
  * Kroki web api site
  *
@@ -49,25 +51,26 @@ export function getKrokiDiagramType(classname, kroki) {
  *
  * @param {string} diagramType
  * @param {string} id
- * @param {string} classname
+ * @param {string[]} classlist
+ * @param {string} style
  * @param {string} imageFormat
  * @param {string} data
  * @param {(html: string | HTMLElement, id?: string) => void} callback
  * @returns
  */
-export function getKrokiImage(diagramType, id, classname, imageFormat, data, callback) {
+export function getKrokiImage(diagramType, id, classlist, style, imageFormat, data, callback) {
   let encoding = 'utf8'
   let mediaType = '*/*'
-  if (imageFormat === 'txt' || imageFormat === 'atxt' || imageFormat === 'utxt') {
-    mediaType = 'text/plain; charset=utf-8'
-    encoding = 'utf8'
-  } else if (imageFormat === 'svg') {
-    mediaType = 'image/svg+xml'
-    encoding = 'binary'
-  } else if (imageFormat === 'png') {
-    mediaType = 'image/png'
-    encoding = 'binary'
-  }
+  // if (imageFormat === 'txt' || imageFormat === 'atxt' || imageFormat === 'utxt') {
+  //   mediaType = 'text/plain; charset=utf-8'
+  //   encoding = 'utf8'
+  // } else if (imageFormat === 'svg') {
+  //   mediaType = 'image/svg+xml'
+  //   encoding = 'binary'
+  // } else if (imageFormat === 'png') {
+  //   mediaType = 'image/png'
+  //   encoding = 'binary'
+  // }
 
   try {
     fetch(`${krokiWebSite}/${diagramType}/${imageFormat}`, {
@@ -82,18 +85,23 @@ export function getKrokiImage(diagramType, id, classname, imageFormat, data, cal
 
         res.text().then((text) => {
           const outerElement = document.createElement('div')
-          if (classname.length > 0) {
-            outerElement.className = classname
+          if (classlist.length > 0) {
+            outerElement.classList.add(...classlist)
+          }
+          if (style.length > 0) {
+            outerElement.style.cssText = style
           }
           outerElement.innerHTML = text
-          outerElement.children[0].id = id
+          if (outerElement.children.length > 0) outerElement.children[0].id = id
           callback(outerElement)
         })
       })
       .catch((error) => {
-        callback(`<pre class="language-text"><code>${error.toString()}</code></pre>`)
+        console.log(`kroki to ${diagramType} ${imageFormat} failed:`, error.toString())
+        // callback(`<pre class="language-text"><code>${error.toString()}</code></pre>`)
       })
   } catch (/** @type {any} */ error) {
-    callback(`<pre class="language-text"><code>${error.toString()}</code></pre>`)
+    console.log(`kroki to ${diagramType} ${imageFormat} failed:`, error.toString())
+    // callback(`<pre class="language-text"><code>${error.toString()}</code></pre>`)
   }
 }

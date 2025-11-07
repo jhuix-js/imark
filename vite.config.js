@@ -6,11 +6,11 @@ import replace from '@rollup/plugin-replace'
 
 export default defineConfig(({ mode }) => {
   return {
-    resolve: {
-      alias: {
-        zlib: '@jspm/core/nodelibs/zlib'
-      }
-    },
+    // resolve: {
+    //   alias: {
+    //     zlib: '@jspm/core/nodelibs/zlib'
+    //   }
+    // },
     plugins: [
       replace({
         preventAssignment: false,
