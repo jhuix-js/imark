@@ -213,6 +213,8 @@
     .toc-view {
       flex-grow: 1;
       direction: rtl;
+      scrollbar-color: #f59102 #f0f0f0;
+      scrollbar-width: thin;
     }
     .toc-view::-webkit-scrollbar-thumb {
       background: #f59102;
