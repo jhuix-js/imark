@@ -410,6 +410,11 @@ function loadTocEvent() {
       }
     }
   })
+
+  const tocView = document.querySelector('.total-toc>.toc-view')
+  if (tocView) {
+    tocView.scrollLeft = -200
+  }
 }
 
 /**

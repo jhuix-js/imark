@@ -39345,6 +39345,8 @@ function loadTocEvent() {
 			}
 		};
 	});
+	let c = document.querySelector(".total-toc>.toc-view");
+	c && (c.scrollLeft = -200);
 }
 function renderToc() {
 	return function(e, t) {
