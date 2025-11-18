@@ -38,6 +38,8 @@
 
 * [ABC](#14-abc)
 
+* [Kroki](#15-kroki)
+
 :::note[Expanded syntax language attribute]{.info}
 
 * **In codeblock of markdown, expanded syntax language attribute from "\`\`\`language" to "\`\`\`language {json}" or "\`\`\`language \[json]".**

@@ -103,6 +103,8 @@ Supports extensions features as follows, preview as the document -- [iMark's Fea
 
 * [ABC](https://jhuix-js.github.io/imark/index.html#14-abc)
 
+* [Kroki](https://jhuix-js.github.io/imark/index.html#15-kroki)
+
 
 ## Usage
 
